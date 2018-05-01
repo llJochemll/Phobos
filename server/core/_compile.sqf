@@ -1,0 +1,1 @@
+Phobos_coreZones = compile preprocessFileLineNumbers "server\core\zones.sqf";

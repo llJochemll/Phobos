@@ -1,0 +1,1 @@
+Phobos_miscVehicleIndex = compile preprocessFileLineNumbers "server\misc\vehicleIndex.sqf";
