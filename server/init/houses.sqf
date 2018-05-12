@@ -54,6 +54,15 @@ capitals = nearestLocations [[worldSize/2,worldSize/2], ["NameCityCapital"], (wo
         };
     } forEach capitals;
 
+    //House damage decreases approval
+    _house addEventHandler ["Dammaged", {
+	    params ["_house", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
+
+        if (damage _house > 0.5) then {
+            _zone = (zones select {_house inArea (_x select 1)}) select 0;
+            _zone set [2, (_zone select 2) - 0.01];
+        };
+    }];
 } forEach housesNormal + housesSafe;
 
 housesRemote = housesNormal - (housesVillages + housesTowns + housesCapitals);

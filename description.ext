@@ -1,0 +1,25 @@
+author = "Jochem";
+OnLoadName = "Phobos";
+OnLoadMission = "Please report any bugs to github";
+respawn = BASE;
+respawndelay = 5;
+respawnOnStart = 0;
+respawnVehicleDelay = 0;
+disabledAI = true;
+enableDebugConsole = 1;
+
+class Header {
+    gameType = Coop; // MP misison type
+    minPlayers = 1; //min # of players the mission supports
+    maxPlayers = 30; //max # of players the mission supports
+};
+
+class CfgSounds {
+	sounds[] = {};
+	class scream {
+		// how the sound is referred to in the editor (e.g. trigger effects)
+		name = "scream_sound";
+		// filename, volume, pitch
+		sound[] = {"data\sounds\scream.ogg", 4, 1};
+	};
+};

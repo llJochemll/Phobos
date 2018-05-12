@@ -1,0 +1,1 @@
+Phobos_coreTalk = compile preprocessFileLineNumbers "client\core\talk.sqf";

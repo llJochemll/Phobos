@@ -8,14 +8,14 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=44;
+		nextID=49;
 	};
 	class Camera
 	{
-		pos[]={4949.5913,704.7796,17447.264};
-		dir[]={0.63663828,-0.67479235,-0.3736136};
-		up[]={0.58196664,0.73799741,-0.34152824};
-		aside[]={-0.50619382,-3.0768133e-006,-0.8625586};
+		pos[]={4910.3882,638.34662,17433.279};
+		dir[]={0.72243863,-0.60387087,0.33715403};
+		up[]={0.54721075,0.79702032,0.25538102};
+		aside[]={0.42296731,-8.0113532e-006,-0.90627223};
 	};
 };
 binarizationWanted=0;
@@ -82,7 +82,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=3;
+		items=4;
 		class Item0
 		{
 			dataType="Object";
@@ -91,8 +91,8 @@ class Mission
 				position[]={4992.1768,573.8963,17479.051};
 				angles[]={0,2.7981286,0};
 			};
-			side="Empty";
-			flags=4;
+			side="West";
+			flags=6;
 			class Attributes
 			{
 				reportOwnPosition=1;
@@ -113,8 +113,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4987.4507,570.08221,17477.271};
-						angles[]={0,2.95558,0};
+						position[]={4992.1768,570.33136,17479.184};
+						angles[]={0,4.6002755,0};
 					};
 					side="West";
 					flags=7;
@@ -124,14 +124,14 @@ class Mission
 					};
 					id=2;
 					type="rhsusf_army_ocp_helipilot";
-					atlOffset=6.1035156e-005;
+					atlOffset=-0.013427734;
 				};
 				class Item1
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4985.6284,569.93414,17476.916};
+						position[]={4995.7275,570.37042,17473.543};
 					};
 					side="West";
 					flags=5;
@@ -140,13 +140,14 @@ class Mission
 					};
 					id=4;
 					type="rhsusf_army_ocp_helipilot";
+					atlOffset=0.044616699;
 				};
 				class Item2
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4985.8877,569.90948,17475.088};
+						position[]={4995.7275,570.37042,17473.543};
 					};
 					side="West";
 					flags=5;
@@ -155,13 +156,14 @@ class Mission
 					};
 					id=6;
 					type="rhsusf_army_ocp_helicrew";
+					atlOffset=0.044616699;
 				};
 				class Item3
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4984.5728,569.82147,17475.605};
+						position[]={4992.1768,570.33136,17479.184};
 					};
 					side="West";
 					flags=5;
@@ -170,13 +172,68 @@ class Mission
 					};
 					id=8;
 					type="rhsusf_army_ocp_helicrew";
+					atlOffset=-0.013427734;
 				};
 			};
 			class Attributes
 			{
 			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=4;
+				};
+				class Links
+				{
+					items=4;
+					class Item0
+					{
+						linkID=0;
+						item0=2;
+						item1=0;
+						class CustomData
+						{
+							role=1;
+						};
+					};
+					class Item1
+					{
+						linkID=1;
+						item0=4;
+						item1=0;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0};
+						};
+					};
+					class Item2
+					{
+						linkID=2;
+						item0=6;
+						item1=0;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={1};
+						};
+					};
+					class Item3
+					{
+						linkID=3;
+						item0=8;
+						item1=0;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={2};
+						};
+					};
+				};
+			};
 			id=1;
-			atlOffset=6.1035156e-005;
+			atlOffset=-0.013427734;
 		};
 		class Item2
 		{
@@ -267,6 +324,83 @@ class Mission
 				};
 				nAttributes=4;
 			};
+		};
+		class Item3
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=4;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4986.3267,569.53339,17464.49};
+					};
+					side="West";
+					flags=7;
+					class Attributes
+					{
+						rank="SERGEANT";
+					};
+					id=45;
+					type="rhsusf_army_ocp_teamleader";
+				};
+				class Item1
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4981.3267,569.4859,17459.49};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						skill=0.40000001;
+					};
+					id=46;
+					type="rhsusf_army_ocp_autorifleman";
+				};
+				class Item2
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4989.3267,569.48572,17459.49};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						skill=0.40000001;
+					};
+					id=47;
+					type="rhsusf_army_ocp_grenadier";
+				};
+				class Item3
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={4991.3267,569.41864,17459.49};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						skill=0.40000001;
+					};
+					id=48;
+					type="rhsusf_army_ocp_riflemanat";
+				};
+			};
+			class Attributes
+			{
+			};
+			id=44;
 		};
 	};
 };

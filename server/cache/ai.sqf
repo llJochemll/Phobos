@@ -97,23 +97,23 @@ for "_i" from 0 to (count unitArray) step 500 do {
                             if (_w select 1 != -1) then {
                                 _waypoint waypointAttachVehicle [_x select 1] call Phobos_commonGet;
                             };
-                            _waypoint setWaypointBehaviour _x select 2; 
-                            _waypoint setWaypointCombatMode _x select 3; 
-                            _waypoint setWaypointCompletionRadius _x select 4;
-                            _waypoint setWaypointDescription _x select 5;
-                            _waypoint setWaypointForceBehaviour _x select 6;
-                            _waypoint setWaypointFormation _x select 7;
-                            _waypoint setWaypointHousePosition _x select 8;
-                            _waypoint setWaypointLoiterRadius _x select 9;
-                            _waypoint setWaypointLoiterType _x select 10;
-                            _waypoint setWaypointName _x select 11;
-                            _waypoint setWaypointPosition _x select 12;
-                            _waypoint setWaypointScript _x select 13;
-                            _waypoint setWaypointSpeed _x select 14;
-                            _waypoint setWaypointStatements _x select 15;
-                            _waypoint setWaypointTimeout _x select 16;
-                            _waypoint setWaypointType _x select 17;
-                            _waypoint setWaypointVisible _x select 18;
+                            _waypoint setWaypointBehaviour (_x select 2); 
+                            _waypoint setWaypointCombatMode (_x select 3); 
+                            _waypoint setWaypointCompletionRadius (_x select 4);
+                            _waypoint setWaypointDescription (_x select 5);
+                            _waypoint setWaypointForceBehaviour (_x select 6);
+                            _waypoint setWaypointFormation (_x select 7);
+                            _waypoint setWaypointHousePosition (_x select 8);
+                            _waypoint setWaypointLoiterRadius (_x select 9);
+                            _waypoint setWaypointLoiterType (_x select 10);
+                            _waypoint setWaypointName (_x select 11);
+                            _waypoint setWaypointPosition [(_x select 12), 0];
+                            _waypoint setWaypointScript (_x select 13);
+                            _waypoint setWaypointSpeed (_x select 14);
+                            _waypoint setWaypointStatements (_x select 15);
+                            _waypoint setWaypointTimeout (_x select 16);
+                            _waypoint setWaypointType (_x select 17);
+                            _waypoint setWaypointVisible (_x select 18);
                         } forEach (_x select 10);
                     } else {
                         _group = [_x select 1] call Phobos_commonGet;
@@ -128,7 +128,7 @@ for "_i" from 0 to (count unitArray) step 500 do {
                     _unit setVariable ["phobos_cache_disabled", !(_x select 5)];
 
                     {
-                        _unit setVariable [_x select 0, _x select 1];
+                        _unit setVariable [_x select 0, _x select 1, true];
                     } forEach (_x select 11);
                     
                     _x set [4, _unit];
@@ -166,9 +166,7 @@ for "_i" from 0 to (count unitArray) step 500 do {
                         };
                     };
 
-                    if (_unit getVariable ["phobos_ai_garrison", false]) then {
-                        doStop (units _group);
-                    };
+                    [_unit] call Phobos_aiInitUnit;
                 };
             } else {
                 _unit = _x select 4;
@@ -223,6 +221,7 @@ for "_i" from 0 to (count unitArray) step 500 do {
                     };
                 };    
             };
+
             [[_forEachIndex + (_this select 1), _x], {unitArray set [(_this select 0), _this select 1]}] remoteExecCall ["BIS_fnc_call", 0];
         } forEach (_this select 0);
         hint (format ["%1=%2",(_this select 1), count (_this select 0)]);
