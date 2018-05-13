@@ -22,9 +22,9 @@ if (side _unit != east || count (units (group _unit)) > 1) then {
 
 _startPos = getPosATL _unit;
 while {alive _unit} do {
-	_target = _unit findNearestEnemy (getPos _unit);
+	_target = _unit findNearestEnemy (getPosATL _unit);
 	if (!isNull _target) then{
-		_unit doMove getPos _target;
+		_unit doMove getPosATL _target;
 
 		if ((_unit distance2D _target) < 25) then{
 			[[_unit], {

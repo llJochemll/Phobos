@@ -9,7 +9,7 @@ _actionTalk = ["phobos_action_talk", "Talk", "", {
 		[20, _this, {
 			(_this select 0) params ["_target", "_player", "_param"];
 
-			_zone = [getPos _target] call Phobos_miscGetZone;
+			_zone = [getPosATL _target] call Phobos_miscGetZone;
 			_target globalChat ("Good boy");
 
 			_target switchMove "";
@@ -23,7 +23,7 @@ _actionTalk = ["phobos_action_talk", "Talk", "", {
 			behaviour _target == "SAFE"
 		}] call ace_common_fnc_progressBar
 	} else {
-		_zone = [getPos _target] call Phobos_miscGetZone;
+		_zone = [getPosATL _target] call Phobos_miscGetZone;
 		switch true do {
 			case ((_zone select 2) < 0.3): {
 				_target globalChat (selectRandom ["Stay away, you filthy Americans", "You are all a disgrace to god"]);

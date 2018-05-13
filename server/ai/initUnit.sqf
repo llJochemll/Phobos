@@ -1,6 +1,6 @@
 params ["_unit"];
 
-_zone = [getPos _unit] call Phobos_miscGetZone;
+_zone = [getPosATL _unit] call Phobos_miscGetZone;
 
 if (_unit getVariable ["phobos_ai_garrison", false]) then {
     doStop _unit;

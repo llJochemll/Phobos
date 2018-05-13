@@ -27,7 +27,7 @@ playerVehicleArray = [];
 	} forEach (allGroups select {side _x == east && !((leader _x) getVariable ["phobos_ai_hastask", false])});
 
 	{
-		[_x, _x, 50, 10, "MOVE", "SAFE", "YELLOW", "LIMITED"] call CBA_fnc_taskPatrol;
+		[_x, _x, 50, 5, "MOVE", "SAFE", "YELLOW", "LIMITED"] call CBA_fnc_taskPatrol;
 		{
 			_x setVariable ["phobos_ai_hastask", true, true];
 		} forEach (units _x);

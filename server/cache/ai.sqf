@@ -6,7 +6,7 @@
 //[vehicleId, position, class/object, virtualizing, damage, direction, variables]
 _playerPositions = [];
 {
-    _pos = getPosASL _x;
+    _pos = getPosATL _x;
     if (count (_playerPositions select {_x distance2D _pos < 100}) == 0) then {
         _playerPositions pushBack _pos;
     };
@@ -19,7 +19,7 @@ _playerPositions = [];
 //Add vehicles to vehicleArray
 /*{
     if ([_x] call Phobos_commonId != -1) then {
-        [vehicleArray, [[_x] call Phobos_commonId, getPosAsl _x, _x, true, damage _x, getDir _x]] remoteExecCall ["pushBack", 0];
+        [vehicleArray, [[_x] call Phobos_commonId, getPosATL _x, _x, true, damage _x, getDir _x]] remoteExecCall ["pushBack", 0];
     };
 } forEach ((vehicles - allUnits) select {_vehicle = _x; count (vehicleArray select {_x select 0 == [_vehicle] call Phobos_commonId}) == 0});*/
 
@@ -30,7 +30,7 @@ _playerPositions = [];
         if (!isNull (objectParent _x)) then {
             _vehicle = [[vehicle _x] call Phobos_commonId, [_x] call Phobos_miscVehicleIndex];
         };
-        [unitArray, [[_x] call Phobos_commonId, [group _x] call Phobos_commonId, getPosAsl _x, _vehicle, _x, !(_x getVariable ["phobos_cache_disabled", false]), damage _x, skill _x, side _x, behaviour _x, _x getVariable ["phobos_ai_garrison", false], []]] remoteExecCall ["pushBack", 0];
+        [unitArray, [[_x] call Phobos_commonId, [group _x] call Phobos_commonId, getPosATL _x, _vehicle, _x, !(_x getVariable ["phobos_cache_disabled", false]), damage _x, skill _x, side _x, behaviour _x, _x getVariable ["phobos_ai_garrison", false], []]] remoteExecCall ["pushBack", 0];
     };
 } forEach ((allUnits - playableUnits) select {_unit = _x; count (unitArray select {_x select 0 == [_unit] call Phobos_commonId}) == 0});*/
 
@@ -38,10 +38,10 @@ _playerPositions = [];
 {
     _pos = _x select 1;
     if (typeName (_x select 2) == "STRING") then {
-        if (count (_playerPositions select {_x distance2D _pos < 1500}) != 0 || !(_x select 3)) then {
+        if (count (_playerPositions select {_x distance2D _pos < 1100}) != 0 || !(_x select 3)) then {
             _vehicle = createVehicle [_x select 2, _x select 1, [], 0, "CAN_COLLIDE"];
             [_vehicle, _x select 0] call Phobos_commonId;
-            _vehicle setPosAsl (_x select 1);
+            _vehicle setPosATL (_x select 1);
             _vehicle setDamage (_x select 4);
             _vehicle setDir (_x select 5);
             _x set [2, _vehicle];
@@ -51,10 +51,10 @@ _playerPositions = [];
         _id = _x select 0;
         _vehicle = _x select 2;
         if (alive _vehicle) then {
-            _x set [1, getPosAsl _vehicle];
+            _x set [1, getPosATL _vehicle];
             _x set [4, damage _vehicle];
             _x set [5, getDir _vehicle];
-            if (count (_playerPositions select {_x distance2D _pos < 1500}) == 0 && (_x select 3)) then {
+            if (count (_playerPositions select {_x distance2D _pos < 1100}) == 0 && (_x select 3)) then {
                 _x set [2, typeOf _vehicle];
                 deleteVehicle _vehicle;
             };
@@ -68,7 +68,7 @@ for "_i" from 0 to (count unitArray) step 500 do {
     [{
         _playerPositions = [];
         {
-            _pos = getPosASL _x;
+            _pos = getPosATL _x;
             if (count (_playerPositions select {_x distance2D _pos < 100}) == 0) then {
                 _playerPositions pushBack _pos;
             };
@@ -83,7 +83,7 @@ for "_i" from 0 to (count unitArray) step 500 do {
         {
             _pos = _x select 2;
             if (typeName (_x select 4) == "STRING") then {
-                if (count (_playerPositions select {_x distance2D _pos < 1500}) != 0 || (((_x select 3) select 0) in _realVehicles && ((_x select 3) select 0) != -1)) then {
+                if (count (_playerPositions select {_x distance2D _pos < 1100}) != 0 || (((_x select 3) select 0) in _realVehicles && ((_x select 3) select 0) != -1)) then {
                     _group = grpNull;
                     if (isNil {[_x select 1] call Phobos_commonGet}) then {
                         _group = createGroup (_x select 8);
@@ -123,7 +123,7 @@ for "_i" from 0 to (count unitArray) step 500 do {
                     _unit = _group createUnit [_x select 4, [0, 0, 0], [], 0, "CAN_COLLIDE"];
                     [_unit, _x select 0] call Phobos_commonId;
                     [_unit] joinSilent _group;
-                    _unit setPosAsl (_x select 2);
+                    _unit setPosATL (_x select 2);
                     _unit setDamage (_x select 6);
                     _unit setVariable ["phobos_cache_disabled", !(_x select 5)];
 
@@ -172,7 +172,7 @@ for "_i" from 0 to (count unitArray) step 500 do {
                 _unit = _x select 4;
                 if (alive _unit) then {
                     _x set [1, [group _unit] call Phobos_commonId];
-                    _x set [2, getPosAsl _unit];
+                    _x set [2, getPosATL _unit];
                     if (!isNull objectParent _unit) then {
                         _x set [3, [[vehicle _unit] call Phobos_commonId, [_unit] call Phobos_miscVehicleIndex]];
                     };
@@ -215,7 +215,7 @@ for "_i" from 0 to (count unitArray) step 500 do {
                     } forEach (allVariables _unit);
                     _x set [11, _variables];
 
-                    if (count (_playerPositions select {_x distance2D _pos < 1500}) == 0 && (_x select 5) && !(((_x select 3) select 0) in _realVehicles)) then {
+                    if (count (_playerPositions select {_x distance2D _pos < 1100}) == 0 && (_x select 5) && !(((_x select 3) select 0) in _realVehicles)) then {
                         _x set [4, typeOf _unit];
                         deleteVehicle _unit;
                     };
