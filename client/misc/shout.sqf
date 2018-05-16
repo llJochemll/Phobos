@@ -2,7 +2,7 @@ player addAction ["<t color='#DD2222'>Stop</t>", {
 	{
 		//Stop units
 		if (_x getVariable ["phobos_ai_officer", false] && abs ((abs ((player getRelDir _x) - 180)) - 180) < 45) then {
-			if (random 1 > 0.5) then {
+			if (random 1 > 0.1) then {
 				doStop _x;
 				["ACE_captives_setSurrendered", [_x, true], _x] call CBA_fnc_targetEvent;
 				[{
@@ -46,5 +46,5 @@ player addAction ["<t color='#DD2222'>Stop</t>", {
 		if (side _x == east) then {
 			_x reveal [player, 4];
 		};
-	} forEach (player nearEntities 50);
+	} forEach ((player nearEntities 50) select {[objNull, "VIEW"] checkVisibility [eyePos player, eyePos _x] > 0.5});
 }, [], 10];

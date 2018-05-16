@@ -12,4 +12,5 @@ unitsEnemy = [
     "LOP_AM_OPF_Infantry_Marksman",
     "LOP_AM_OPF_Infantry_AR"
 ];
+unitsOfficer = ["LOP_AM_OPF_Infantry_SL"];
 vehiclesCivilian = [""];

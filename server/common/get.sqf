@@ -7,7 +7,7 @@ if (count _groups > 0) then {
 	_thing = (_groups select 0);
 };
 
-_objects = (allUnits + vehicles) select {([_x] call Phobos_commonId) == _id};
+_objects = (allUnits + vehicles + allDead) select {([_x] call Phobos_commonId) == _id};
 if (count _objects > 0) then { 
 	_thing = (_objects select 0);
 };
