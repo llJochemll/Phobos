@@ -1,1 +1,1 @@
-missionTypes = [["Cache", 20], ["Hostage", 1], ["Hvt", 10]];
+missionTypes = [["Cache", 5], ["Hostage", 0], ["Hvt", 0]];

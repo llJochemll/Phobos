@@ -6,7 +6,7 @@ if (_unit getVariable ["phobos_ai_garrison", false]) then {
     doStop _unit;
 };
 
-if (random 10 + 0.3 <= 1 - (_zone select 2)) then {
+if ((side _unit == civilian && random 10 + 0.3 <= 1 - (_zone select 2)) || _unit getVariable ["phobos_ai_bomber", false]) then {
     [_unit] spawn Phobos_aiBomber;
 };
 

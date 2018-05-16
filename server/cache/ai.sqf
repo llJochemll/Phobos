@@ -224,7 +224,7 @@ for "_i" from 0 to (count unitArray) step 500 do {
 
             [[_forEachIndex + (_this select 1), _x], {unitArray set [(_this select 0), _this select 1]}] remoteExecCall ["BIS_fnc_call", 0];
         } forEach (_this select 0);
-        hint (format ["%1=%2",(_this select 1), count (_this select 0)]);
+        //hint (format ["%1=%2",(_this select 1), count (_this select 0)]);
     }, [unitArray select [_i, 500], _i], _i / 1000] call CBA_fnc_waitAndExecute;
 };
 

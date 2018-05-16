@@ -11,6 +11,21 @@
 		_zone set [3, _morale - 0.001];
 	};
 
+	//Keep approval and morale between 0 and 1
+	if ((_zone select 2) > 1) then {
+		_zone set [2, 1];
+	};
+	if ((_zone select 3) > 1) then {
+		_zone set [3, 1];
+	};
+	if ((_zone select 2) < 0) then {
+		_zone set [2, 0];
+	};
+	if ((_zone select 2) < 0) then {
+		_zone set [3, 0];
+	};
+
+	//Change colors
 	switch true do {
 		case (_approval < 0.3): {
 			_marker setMarkerColor "ColorRed";

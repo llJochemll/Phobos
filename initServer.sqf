@@ -14,7 +14,7 @@ playerVehicleArray = [];
 [] call Phobos_initZones;
 
 [Phobos_cacheAi, 10] call CBA_fnc_addPerFrameHandler;
-[Phobos_coreMissions, 10] call CBA_fnc_addPerFrameHandler;
+[Phobos_coreMissions, 1] call CBA_fnc_addPerFrameHandler;
 [Phobos_coreZones, 10] call CBA_fnc_addPerFrameHandler;
 
 //Temp

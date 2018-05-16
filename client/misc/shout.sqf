@@ -20,7 +20,7 @@ player addAction ["<t color='#DD2222'>Stop</t>", {
 					doStop _x;
 					[{
 						params ["_unit"];
-						player distance2D _unit > 50
+						player distance2D _unit > 50 || (behaviour _unit == "COMBAT" && abs ((abs ((player getRelDir _unit) - 180)) - 180) > 45)
 					}, {
 						params ["_unit"];
 						_unit doFollow (leader (group _unit));
