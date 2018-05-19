@@ -33,6 +33,7 @@ _mission = [_officerPos, {
 }, {
 	params ["_officerId"];
 
-	[[west, "HQ"], "HVT killed!"] remoteExecCall ["sideChat", -2]; 
+	[[west, "HQ"], "HVT killed!"] remoteExecCall ["sideChat", -2];
+	["TaskSucceeded", ["HVT killed!", "HVT killed!"]] remoteExecCall ["BIS_fnc_showNotification", -2]; 
 }, [_officerId], -1, _marker];
 _mission

@@ -27,6 +27,7 @@ _mission = [_cachePos, {
 }, {
 	params ["_cacheId"];
 
-	[[west, "HQ"], "Cache destroyed!"] remoteExecCall ["sideChat", -2]; 
+	[[west, "HQ"], "Cache destroyed!"] remoteExecCall ["sideChat", -2];
+	["TaskSucceeded", ["Cache destroyed!", "Cache destroyed!"]] remoteExecCall ["BIS_fnc_showNotification", -2];
 }, [_cacheId], -1, _marker];
 _mission

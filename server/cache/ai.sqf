@@ -12,10 +12,6 @@ _playerPositions = [];
     };
 } forEach (allPlayers select {typeOf (vehicle _x) != "plane"});
 
-{
-    deleteGroup _x;
-} forEach (allGroups select {count (units _x) == 0});
-
 //Add vehicles to vehicleArray
 /*{
     if ([_x] call Phobos_commonId != -1) then {
@@ -66,6 +62,10 @@ _playerPositions = [];
 //unitArray
 for "_i" from 0 to (count unitArray) step 500 do {
     [{
+        {
+            deleteGroup _x;
+        } forEach (allGroups select {count (units _x) == 0 && side _x != west});
+
         _playerPositions = [];
         {
             _pos = getPosATL _x;
@@ -227,9 +227,3 @@ for "_i" from 0 to (count unitArray) step 500 do {
         //hint (format ["%1=%2",(_this select 1), count (_this select 0)]);
     }, [unitArray select [_i, 500], _i], _i / 1000] call CBA_fnc_waitAndExecute;
 };
-
-
-//Delete empty groups
-{
-    deleteGroup _x;
-} forEach (allGroups select {count (units _x) == 0});

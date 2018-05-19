@@ -1,6 +1,8 @@
 #include "config\classnames.hpp";
+#include "config\groups.hpp";
 #include "config\missions.hpp";
 #include "server\_compile.sqf";
+#include "shared\_compile.sqf";
 
 phobosId = 0;
 unitArray = [];
@@ -12,6 +14,8 @@ playerVehicleArray = [];
 [] call Phobos_initCivilian;
 [] call Phobos_initMissions;
 [] call Phobos_initZones;
+
+["Initialize", [false, 5, true]] call Phobos_squadmanagerDynamicGroups;
 
 [Phobos_cacheAi, 10] call CBA_fnc_addPerFrameHandler;
 [Phobos_coreMissions, 1] call CBA_fnc_addPerFrameHandler;

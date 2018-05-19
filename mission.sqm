@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=73;
+		nextID=76;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={4993.5933,629.94733,17367.002};
-		dir[]={-0.020353727,-0.56360674,0.82591754};
-		up[]={-0.01388282,0.82603174,0.56344765};
-		aside[]={0.99981296,2.5979625e-007,0.024635794};
+		pos[]={11814.195,21.607529,3898.5364};
+		dir[]={0.0665344,-0.019180357,0.99765897};
+		up[]={0.001279261,0.99981111,0.019182274};
+		aside[]={0.99784535,-7.3603314e-007,-0.066546448};
 	};
 };
 binarizationWanted=0;
@@ -27,13 +27,15 @@ addons[]=
 {
 	"RHS_US_A2_AirImport",
 	"rhsusf_c_troops",
-	"A3_Modules_F_Curator_Curator"
+	"A3_Modules_F_Curator_Curator",
+	"A3_Weapons_F_Ammoboxes",
+	"ace_cargo"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=3;
+		items=5;
 		class Item0
 		{
 			className="RHS_US_A2_AirImport";
@@ -55,6 +57,20 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item3
+		{
+			className="A3_Weapons_F";
+			name="Arma 3 Alpha - Weapons and Accessories";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item4
+		{
+			className="ace_cargo";
+			name="ACE3 - Cargo";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
 	};
 };
 randomSeed=2303093;
@@ -75,6 +91,25 @@ class CustomAttributes
 	{
 		name="Multiplayer";
 		class Attribute0
+		{
+			property="RespawnButton";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"SCALAR"
+						};
+					};
+					value=0;
+				};
+			};
+		};
+		class Attribute1
 		{
 			property="RespawnTemplates";
 			expression="true";
@@ -138,25 +173,6 @@ class CustomAttributes
 				};
 			};
 		};
-		class Attribute1
-		{
-			property="RespawnButton";
-			expression="true";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"SCALAR"
-						};
-					};
-					value=0;
-				};
-			};
-		};
 		nAttributes=2;
 	};
 };
@@ -185,7 +201,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=4;
+		items=5;
 		class Item0
 		{
 			dataType="Object";
@@ -440,7 +456,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4986.3267,569.53339,17464.49};
+						position[]={5015.2256,570.34467,17494.326};
 					};
 					side="West";
 					flags=7;
@@ -480,7 +496,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4981.3267,569.4859,17459.49};
+						position[]={5010.2256,570.34473,17489.326};
 					};
 					side="West";
 					flags=5;
@@ -491,6 +507,7 @@ class Mission
 					};
 					id=46;
 					type="rhsusf_army_ocp_autorifleman";
+					atlOffset=6.1035156e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -520,7 +537,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4989.3267,569.48572,17459.49};
+						position[]={5018.2256,570.34473,17489.326};
 					};
 					side="West";
 					flags=5;
@@ -531,6 +548,7 @@ class Mission
 					};
 					id=47;
 					type="rhsusf_army_ocp_grenadier";
+					atlOffset=6.1035156e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -560,7 +578,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={4991.3267,569.41864,17459.49};
+						position[]={5020.2256,570.34467,17489.326};
 					};
 					side="West";
 					flags=5;
@@ -618,6 +636,46 @@ class Mission
 								};
 							};
 							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item4
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={5023.395,571.2356,17490.344};
+				angles[]={0,3.9656498,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="call{[this, true] call ace_arsenal_fnc_initBox;}";
+			};
+			id=75;
+			type="B_supplyCrate_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],true]";
 						};
 					};
 				};

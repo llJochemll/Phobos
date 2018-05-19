@@ -1,0 +1,1 @@
+#include "squadmanager\_compile.sqf";

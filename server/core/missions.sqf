@@ -32,3 +32,5 @@
 		};
 	} forEach _mission;
 } forEach missions;
+
+publicVariable "missions";
