@@ -1,0 +1,1 @@
+[] execVM "Vcom\VcomInit.sqf";

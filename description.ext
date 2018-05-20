@@ -14,6 +14,11 @@ class Header {
     maxPlayers = 30; //max # of players the mission supports
 };
 
+class CfgFunctions 
+{
+	#include "vcom\cfgFunctions.hpp"
+};
+
 class CfgSounds {
 	sounds[] = {};
 	class scream {
@@ -23,4 +28,8 @@ class CfgSounds {
 		sound[] = {"data\sounds\scream.ogg", 4, 1};
 		titles[] = {0,""};
 	};
+};
+
+class Extended_PreInit_EventHandlers {
+	VCM_CBASettings = call compile preprocessFileLineNumbers "Vcom\Functions\VCM_CBASettings.sqf";
 };
