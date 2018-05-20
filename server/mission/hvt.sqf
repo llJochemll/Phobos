@@ -13,27 +13,34 @@ for "_i" from 1 to 5 do {
 
 //Patrolling enemies
 for "_i" from 1 to 2 do {
-	[_officerPos, unitsEnemy, 5 + (random 3), east] call Phobos_spawnVirtualGroup;
+	[getPosATL _house, unitsEnemy, 5 + (random 3), east] call Phobos_spawnVirtualGroup;
 };
 
-_marker = createMarker [format ["phobos_marker_mission_%1", phobosId], _officerPos];
+_marker = createMarker [format ["phobos_marker_mission_%1", phobosId], getPosATL _house];
 _marker setMarkerShape "ELLIPSE";
 _marker setMarkerBrush "SolidBorder";
 _marker setMarkerColor "ColorOPFOR";
 
-_mission = [_officerPos, {
+_mission = [getPosATL _house, {
 	params ["_officerId"];
 
 	_complete = false;
 	_officer = [_officerId] call Phobos_commonGet;
 	if (isNil {_officer}) exitWith {_complete};
 
-	_complete = !(alive _officer);
+	_complete = !(alive _officer) || _officer inArea phobos_trigger_prison;
 	_complete
 }, {
 	params ["_officerId"];
 
-	[[west, "HQ"], "HVT killed!"] remoteExecCall ["sideChat", -2];
-	["TaskSucceeded", ["HVT killed!", "HVT killed!"]] remoteExecCall ["BIS_fnc_showNotification", -2]; 
+	_officer = [_officerId] call Phobos_commonGet;
+	if (isNil {_officer} || !(alive _officer)) then {
+		[[west, "HQ"], "HVT killed!"] remoteExecCall ["sideChat", -2];
+		["TaskSucceeded", ["HVT killed!", "HVT killed!"]] remoteExecCall ["BIS_fnc_showNotification", -2];
+	} else {
+		[[west, "HQ"], "HVT Captured!"] remoteExecCall ["sideChat", -2];
+		["TaskSucceeded", ["HVT Captured!", "HVT Captured!"]] remoteExecCall ["BIS_fnc_showNotification", -2];
+		[random 5 + 5] remoteExecCall ["Phobos_intelAdd", 2]; 
+	};
 }, [_officerId], -1, _marker];
 _mission

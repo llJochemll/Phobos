@@ -10,6 +10,10 @@ if ((side _unit == civilian && random 10 + 0.3 <= 1 - (_zone select 2)) || _unit
     [_unit] spawn Phobos_aiBomber;
 };
 
+if (_unit getVariable ["phobos_ai_hostage", false]) then {
+    ["ACE_captives_setHandcuffed", [_unit, true], _unit] call CBA_fnc_targetEvent;
+};
+
 if (_unit getVariable ["phobos_ai_officer", false]) then {
     removeGoggles _unit ;
     _unit addGoggles "G_Aviator";

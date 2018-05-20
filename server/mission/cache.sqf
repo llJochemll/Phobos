@@ -7,15 +7,15 @@ _cacheId = ["rhs_7ya37_1_single", _cachePos, 0] call Phobos_spawnVirtualVehicle;
 
 //Enemies
 for "_i" from 1 to 3 do {
-	[_cachePos, unitsEnemy, 5 + (random 3), east] call Phobos_spawnVirtualGroup;
+	[getPosATL _house, unitsEnemy, 5 + (random 3), east] call Phobos_spawnVirtualGroup;
 };
 
-_marker = createMarker [format ["phobos_marker_mission_%1", phobosId], _cachePos];
+_marker = createMarker [format ["phobos_marker_mission_%1", phobosId], getPosATL _house];
 _marker setMarkerShape "ELLIPSE";
 _marker setMarkerBrush "SolidBorder";
 _marker setMarkerColor "ColorOPFOR";
 
-_mission = [_cachePos, {
+_mission = [getPosATL _house, {
 	params ["_cacheId"];
 
 	_complete = false;
