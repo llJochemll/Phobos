@@ -37,4 +37,4 @@
 			_marker setMarkerColor "ColorGreen";
 		};
 	};
-} forEach zones;
+} forEach (zones select {markerColor (_x select 1) != "ColorCIV"});

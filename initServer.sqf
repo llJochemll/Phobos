@@ -6,7 +6,9 @@
 
 phobosId = 0;
 unitArray = [];
+unitArrayDelete = [];
 vehicleArray = [];
+vehicleArrayDelete = [];
 playerVehicleArray = [];
 
 [] call Phobos_initHouses;

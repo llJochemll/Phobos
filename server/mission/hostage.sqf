@@ -44,5 +44,5 @@ _mission = [getPosATL _house, {
 		[[west, "HQ"], "Hostage rescued!"] remoteExecCall ["sideChat", -2];
 		["TaskSucceeded", ["Hostage rescued!", "Hostage rescued!"]] remoteExecCall ["BIS_fnc_showNotification", -2]; 
 	};
-}, [_hostageId], -1, _marker];
+}, [_hostageId], 0, 1000, _marker];
 _mission

@@ -4,7 +4,7 @@
 	{
 		_missionType = (missionTypes select _forEachIndex) select 0;
 		{
-			if (_pos inArea (_x select 5)) then {
+			if (_pos inArea (_x select 6)) then {
 				hint _missionType;
 			};
 		} forEach _x;

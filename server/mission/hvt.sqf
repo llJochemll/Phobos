@@ -42,5 +42,5 @@ _mission = [getPosATL _house, {
 		["TaskSucceeded", ["HVT Captured!", "HVT Captured!"]] remoteExecCall ["BIS_fnc_showNotification", -2];
 		[random 5 + 5] remoteExecCall ["Phobos_intelAdd", 2]; 
 	};
-}, [_officerId], -1, _marker];
+}, [_officerId], 0, 1500, _marker];
 _mission

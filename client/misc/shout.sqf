@@ -10,7 +10,7 @@ player addAction ["<t color='#DD2222'>Stop</t>", {
 					abs ((abs ((player getRelDir _unit) - 180)) - 180) > 45
 				}, {
 					params ["_unit"];
-					_unit doFollow (leader (group _unit));
+					[_unit, leader (group _unit)] remoteExecCall ["doFollow", _unit];
 					["ACE_captives_setSurrendered", [_unit, false], _unit] call CBA_fnc_targetEvent;
 				}, [_x]] call CBA_fnc_waitUntilAndExecute;
 			};
@@ -23,7 +23,7 @@ player addAction ["<t color='#DD2222'>Stop</t>", {
 						player distance2D _unit > 50 || (behaviour _unit == "COMBAT" && abs ((abs ((player getRelDir _unit) - 180)) - 180) > 45)
 					}, {
 						params ["_unit"];
-						_unit doFollow (leader (group _unit));
+						[_unit, leader (group _unit)] remoteExecCall ["doFollow", _unit];
 					}, [_x]] call CBA_fnc_waitUntilAndExecute;
 				};
 			} else {
@@ -35,7 +35,7 @@ player addAction ["<t color='#DD2222'>Stop</t>", {
 						abs ((abs ((player getRelDir _unit) - 180)) - 180) > 45
 					}, {
 						params ["_unit"];
-						_unit doFollow (leader (group _unit));
+						[_unit, leader (group _unit)] remoteExecCall ["doFollow", _unit];
 						["ACE_captives_setSurrendered", [_unit, false], _unit] call CBA_fnc_targetEvent;
 					}, [_x]] call CBA_fnc_waitUntilAndExecute;
 				};

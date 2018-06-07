@@ -4,8 +4,8 @@ if (_pos isEqualTo [0, 0, 0]) then {
 	for "_i" from 1 to _value do {
 		_typeIndex = floor (random (count missions));
 		_missionIndex = floor (random (count (missions select _typeIndex)));
-		if ((((missions select _typeIndex) select _missionIndex) select 4) == -1) then {
-			((missions select _typeIndex) select _missionIndex) set [4, 1000];
+		if ((((missions select _typeIndex) select _missionIndex) select 4) == 0) then {
+			((missions select _typeIndex) select _missionIndex) set [4, ((missions select _typeIndex) select _missionIndex) select 5];
 		} else {
 			((missions select _typeIndex) select _missionIndex) set [4, (((missions select _typeIndex) select _missionIndex) select 4) / 2];
 		};
@@ -26,8 +26,8 @@ if (_pos isEqualTo [0, 0, 0]) then {
 		for "_i" from 1 to _value do {
 			_mission = selectRandom _nearMissions;
 
-			if (((_mission select 0) select 4) == -1) then {
-				((missions select ((_mission select 1) select 0)) select ((_mission select 1) select 1)) set [4, 1000];
+			if (((_mission select 0) select 4) == 0) then {
+				((missions select ((_mission select 1) select 0)) select ((_mission select 1) select 1)) set [4, _mission select 5];
 			} else {
 				((missions select ((_mission select 1) select 0)) select ((_mission select 1) select 1)) set [4, ((_mission select 0) select 4) / 2];
 			};

@@ -20,6 +20,6 @@ if (_unit getVariable ["phobos_ai_officer", false]) then {
 };
 
 if (side _unit == civilian) then {
-    _unit setVariable ["phobos_ai_intel", false, true];
+    _unit setVariable ["phobos_ai_intel", true, true];
     _unit setVariable ["phobos_ai_friendly", random 1 < (_zone select 2), true];
 };

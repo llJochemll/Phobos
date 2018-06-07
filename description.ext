@@ -1,6 +1,6 @@
 author = "Jochem";
 OnLoadName = "Phobos";
-OnLoadMission = "Please report any bugs to github";
+OnLoadMission = "Please report any bugs on github";
 respawn = BASE;
 respawndelay = 5;
 respawnOnStart = 0;
@@ -14,11 +14,6 @@ class Header {
     maxPlayers = 30; //max # of players the mission supports
 };
 
-class CfgFunctions 
-{
-	#include "vcom\cfgFunctions.hpp"
-};
-
 class CfgSounds {
 	sounds[] = {};
 	class scream {
@@ -30,6 +25,7 @@ class CfgSounds {
 	};
 };
 
-class Extended_PreInit_EventHandlers {
-	VCM_CBASettings = call compile preprocessFileLineNumbers "vcom\Functions\VCM_CBASettings.sqf";
-};
+//UI dialogs
+#include "\A3\ui_f\hpp\defineCommonGrids.inc"
+#include "\A3\ui_f\hpp\defineCommonColors.inc"
+#include "dialog\PhobosVehicleSpawnerDialog.hpp"

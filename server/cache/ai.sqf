@@ -2,8 +2,8 @@
 //Script made by Jochem//
 /////////////////////////
 //virtualizing
-//[unitId, groupId, position, vehicle, class/object, virtualizing, damage, skill, side, behaviour, waypoints, variables]
-//[vehicleId, position, class/object, virtualizing, damage, direction, variables]
+//[unitId, groupId, position, vehicle, class, object, damage, skill, side, behaviour, waypoints, variables]
+//[vehicleId, position, class, object, damage, direction, variables]
 _playerPositions = [];
 {
     _pos = getPosATL _x;
@@ -12,56 +12,55 @@ _playerPositions = [];
     };
 } forEach (allPlayers select {typeOf (vehicle _x) != "plane"});
 
-//Add vehicles to vehicleArray
-/*{
-    if ([_x] call Phobos_commonId != -1) then {
-        [vehicleArray, [[_x] call Phobos_commonId, getPosATL _x, _x, true, damage _x, getDir _x]] remoteExecCall ["pushBack", 0];
-    };
-} forEach ((vehicles - allUnits) select {_vehicle = _x; count (vehicleArray select {_x select 0 == [_vehicle] call Phobos_commonId}) == 0});*/
+{
+    vehicleArray deleteAt _x;
+    [_x, {vehicleArray deleteAt _this;}] remoteExecCall ["BIS_fnc_call", -clientOwner];
+} forEach vehicleArrayDelete;
+vehicleArrayDelete = [];
 
-//Add units to unitArray
-/*{
-    if ([_x] call Phobos_commonId != -1) then {
-        _vehicle = [-1, []];
-        if (!isNull (objectParent _x)) then {
-            _vehicle = [[vehicle _x] call Phobos_commonId, [_x] call Phobos_miscVehicleIndex];
-        };
-        [unitArray, [[_x] call Phobos_commonId, [group _x] call Phobos_commonId, getPosATL _x, _vehicle, _x, !(_x getVariable ["phobos_cache_disabled", false]), damage _x, skill _x, side _x, behaviour _x, _x getVariable ["phobos_ai_garrison", false], []]] remoteExecCall ["pushBack", 0];
-    };
-} forEach ((allUnits - playableUnits) select {_unit = _x; count (unitArray select {_x select 0 == [_unit] call Phobos_commonId}) == 0});*/
+{
+    unitArray deleteAt _x;
+    [_x, {unitArray deleteAt _this;}] remoteExecCall ["BIS_fnc_call", -clientOwner];
+} forEach unitArrayDelete;
+unitArrayDelete = [];
 
 //vehicleArray
 {
     _pos = _x select 1;
-    if (typeName (_x select 2) == "STRING") then {
-        if (count (_playerPositions select {_x distance2D _pos < 1100}) != 0 || !(_x select 3)) then {
+    if (isNull (_x select 3)) then {
+        if (count (_playerPositions select {_x distance2D _pos < 1100}) != 0) then {
             _vehicle = createVehicle [_x select 2, _x select 1, [], 0, "CAN_COLLIDE"];
             [_vehicle, _x select 0] call Phobos_commonId;
             _vehicle setPosATL (_x select 1);
             _vehicle setDamage (_x select 4);
             _vehicle setDir (_x select 5);
-            _x set [2, _vehicle];
-            [[_forEachIndex, _x], {vehicleArray set [_this select 0, _this select 1]}] remoteExecCall ["BIS_fnc_call", 0];
+            _x set [3, _vehicle];
+            
+            [[_forEachIndex, _x], {vehicleArray set [_this select 0, _this select 1];}] remoteExecCall ["BIS_fnc_call", 0];
         };
     } else {
         _id = _x select 0;
-        _vehicle = _x select 2;
+        _vehicle = _x select 3;
         if (alive _vehicle) then {
             _x set [1, getPosATL _vehicle];
             _x set [4, damage _vehicle];
             _x set [5, getDir _vehicle];
-            if (count (_playerPositions select {_x distance2D _pos < 1100}) == 0 && (_x select 3)) then {
+            if (count (_playerPositions select {_x distance2D _pos < 1100}) == 0) then {
                 _x set [2, typeOf _vehicle];
                 deleteVehicle _vehicle;
             };
-            [[_forEachIndex, _x], {vehicleArray set [_this select 0, _this select 1]}] remoteExecCall ["BIS_fnc_call", 0];
+
+            [[_forEachIndex, _x], {vehicleArray set [_this select 0, _this select 1];}] remoteExecCall ["BIS_fnc_call", 0];
+        } else {
+            vehicleArrayDelete pushBack _forEachIndex;
         };
     };
 } forEach vehicleArray;
 
 //unitArray
-for "_i" from 0 to (count unitArray) step 500 do {
+for "_i" from 0 to (count unitArray) step 100 do {
     [{
+        params [""];
         {
             deleteGroup _x;
         } forEach (allGroups select {count (units _x) == 0 && side _x != west});
@@ -82,7 +81,7 @@ for "_i" from 0 to (count unitArray) step 500 do {
         
         {
             _pos = _x select 2;
-            if (typeName (_x select 4) == "STRING") then {
+            if (isNull (_x select 5)) then {
                 if (count (_playerPositions select {_x distance2D _pos < 1100}) != 0 || (((_x select 3) select 0) in _realVehicles && ((_x select 3) select 0) != -1)) then {
                     _group = grpNull;
                     if (isNil {[_x select 1] call Phobos_commonGet}) then {
@@ -91,10 +90,10 @@ for "_i" from 0 to (count unitArray) step 500 do {
 
                         {
                             _waypoint = _group addWaypoint [_x select 12, _x select 4];
-                            if (_w select 0 != -1) then {
+                            if (_x select 0 != -1) then {
                                 _waypoint waypointAttachObject [_x select 0] call Phobos_commonGet;
                             };
-                            if (_w select 1 != -1) then {
+                            if (_x select 1 != -1) then {
                                 _waypoint waypointAttachVehicle [_x select 1] call Phobos_commonGet;
                             };
                             _waypoint setWaypointBehaviour (_x select 2); 
@@ -125,13 +124,12 @@ for "_i" from 0 to (count unitArray) step 500 do {
                     [_unit] joinSilent _group;
                     _unit setPosATL (_x select 2);
                     _unit setDamage (_x select 6);
-                    _unit setVariable ["phobos_cache_disabled", !(_x select 5)];
 
                     {
                         _unit setVariable [_x select 0, _x select 1, true];
                     } forEach (_x select 11);
                     
-                    _x set [4, _unit];
+                    _x set [5, _unit];
 
                     //Vehicle (0:driver 1:commander 2:gunner)
                     if (((_x select 3) select 0) in _realVehicles) then {
@@ -167,16 +165,18 @@ for "_i" from 0 to (count unitArray) step 500 do {
                     };
 
                     [_unit] call Phobos_aiInitUnit;
+
+                    [[_forEachIndex + (_this select 1), _x], {unitArray set [(_this select 0), _this select 1];}] remoteExecCall ["BIS_fnc_call", 0];
                 };
             } else {
-                _unit = _x select 4;
+                _unit = _x select 5;
                 if (alive _unit) then {
                     _x set [1, [group _unit] call Phobos_commonId];
                     _x set [2, getPosATL _unit];
                     if (!isNull objectParent _unit) then {
                         _x set [3, [[vehicle _unit] call Phobos_commonId, [_unit] call Phobos_miscVehicleIndex]];
                     };
-                    _x set [5, !(_unit getVariable ["phobos_cache_disabled", false])];
+
                     _x set [6, damage _unit];
                     _x set [7, skill _unit];
                     _x set [8, side _unit];
@@ -215,15 +215,17 @@ for "_i" from 0 to (count unitArray) step 500 do {
                     } forEach (allVariables _unit);
                     _x set [11, _variables];
 
-                    if (count (_playerPositions select {_x distance2D _pos < 1100}) == 0 && (_x select 5) && !(((_x select 3) select 0) in _realVehicles)) then {
+                    if (count (_playerPositions select {_x distance2D _pos < 1100}) == 0 && !(((_x select 3) select 0) in _realVehicles)) then {
                         _x set [4, typeOf _unit];
                         deleteVehicle _unit;
                     };
+
+                    [[_forEachIndex + (_this select 1), _x], {unitArray set [(_this select 0), _this select 1];}] remoteExecCall ["BIS_fnc_call", 0];
+                } else {
+                    unitArrayDelete pushBack (_forEachIndex + (_this select 1));
                 };    
             };
-
-            [[_forEachIndex + (_this select 1), _x], {unitArray set [(_this select 0), _this select 1]}] remoteExecCall ["BIS_fnc_call", 0];
         } forEach (_this select 0);
         //hint (format ["%1=%2",(_this select 1), count (_this select 0)]);
-    }, [unitArray select [_i, 500], _i], _i / 1000] call CBA_fnc_waitAndExecute;
+    }, [unitArray select [_i, 100], _i], _i / 100] call CBA_fnc_waitAndExecute;
 };

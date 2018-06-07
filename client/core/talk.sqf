@@ -3,8 +3,8 @@ _actionTalk = ["phobos_action_talk", "Talk", "", {
 	if (_target getVariable ["phobos_ai_friendly", false]) then {
 		if (_target getVariable ["phobos_ai_intel", true]) then {
 			_target setDir (_target getRelDir _player) + (getDir _target);
-			_player setDir (_player getRelDir _target) + (getDir _player);;
-			_target playMoveNow "Acts_CivilTalking_2";
+			_player setDir (_player getRelDir _target) + (getDir _player);
+			[_target, "Acts_CivilTalking_2"] remoteExecCall ["playMoveNow", _target];
 			_player switchMove "Acts_NATOCommanderArrival_Commander_5";
 
 			[20, _this, {
@@ -13,11 +13,11 @@ _actionTalk = ["phobos_action_talk", "Talk", "", {
 				[random 5, getPosATL _target] remoteExecCall ["Phobos_intelAdd", 2]; 
 				_target setVariable ["phobos_ai_intel", false, true];
 
-				_target switchMove "";
+				[_target, ""] remoteExecCall ["switchMove", _target];
 				_player switchMove "amovpercmstpslowwrfldnon";
 			}, {
 				(_this select 0) params ["_target", "_player", "_param"];
-				_target switchMove "";
+				[_target, ""] remoteExecCall ["switchMove", _target];
 				_player switchMove "amovpercmstpslowwrfldnon";
 			}, "Talking", {
 				(_this select 0) params ["_target", "_player", "_param"];

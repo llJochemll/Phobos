@@ -1,0 +1,1 @@
+#include "spawner\_compile.sqf";

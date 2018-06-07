@@ -1,3 +1,9 @@
+ieds = [
+    "ACE_IEDLandBig_Range_ammo",
+	"ACE_IEDUrbanBig_Range_ammo",
+	"ACE_IEDLandSmall_Range_ammo",
+	"ACE_IEDUrbanSmall_Range_ammo"
+];
 unitsCivilian = ["LOP_Tak_Civ_Random"];
 unitsEnemy = [
     "LOP_AM_OPF_Infantry_Engineer",
