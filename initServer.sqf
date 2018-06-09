@@ -17,6 +17,9 @@ playerVehicleArray = [];
 [] call Phobos_initMissions;
 [] call Phobos_initZones;
 
+unitArray = [unitArray] call CBA_fnc_shuffle;
+vehicleArray = [vehicleArray] call CBA_fnc_shuffle;
+
 ["Initialize", [false, 5, true]] call Phobos_squadmanagerDynamicGroups;
 
 [Phobos_cacheAi, 10] call CBA_fnc_addPerFrameHandler;
