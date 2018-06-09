@@ -24,8 +24,3 @@ class CfgSounds {
 		titles[] = {0,""};
 	};
 };
-
-//UI dialogs
-#include "\A3\ui_f\hpp\defineCommonGrids.inc"
-#include "\A3\ui_f\hpp\defineCommonColors.inc"
-#include "dialog\PhobosVehicleSpawnerDialog.hpp"

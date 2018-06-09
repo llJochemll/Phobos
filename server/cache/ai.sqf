@@ -52,7 +52,9 @@ unitArrayDelete = [];
 
             [[_forEachIndex, _x], {vehicleArray set [_this select 0, _this select 1];}] remoteExecCall ["BIS_fnc_call", 0];
         } else {
-            vehicleArrayDelete pushBack _forEachIndex;
+            if (isNull (_x select 5)) then {
+                vehicleArrayDelete pushBack _forEachIndex;
+            };
         };
     };
 } forEach vehicleArray;
@@ -81,7 +83,7 @@ for "_i" from 0 to (count unitArray) step 100 do {
         
         {
             _pos = _x select 2;
-            if (isNull (_x select 5)) then {
+            if (isNull (_x select 5) && (_x select 1) >= 0) then {
                 if (count (_playerPositions select {_x distance2D _pos < 1100}) != 0 || (((_x select 3) select 0) in _realVehicles && ((_x select 3) select 0) != -1)) then {
                     _group = grpNull;
                     if (isNil {[_x select 1] call Phobos_commonGet}) then {
@@ -118,7 +120,6 @@ for "_i" from 0 to (count unitArray) step 100 do {
                         _group = [_x select 1] call Phobos_commonGet;
                     };
 
-                    //Create unit
                     _unit = _group createUnit [_x select 4, [0, 0, 0], [], 0, "CAN_COLLIDE"];
                     [_unit, _x select 0] call Phobos_commonId;
                     [_unit] joinSilent _group;
@@ -222,7 +223,9 @@ for "_i" from 0 to (count unitArray) step 100 do {
 
                     [[_forEachIndex + (_this select 1), _x], {unitArray set [(_this select 0), _this select 1];}] remoteExecCall ["BIS_fnc_call", 0];
                 } else {
-                    unitArrayDelete pushBack (_forEachIndex + (_this select 1));
+                    if (isNull (_x select 5)) then {
+                        unitArrayDelete pushBack (_forEachIndex + (_this select 1));
+                    };
                 };    
             };
         } forEach (_this select 0);

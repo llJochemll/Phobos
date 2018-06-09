@@ -4,7 +4,7 @@ disableSerialization;
 // Include common defines file
 #include "\A3\Functions_F_MP_Mark\DynamicGroupsCommonDefines.inc"
 
-uiNamespace setVariable["Phobos_squadmanagerDisplay",Phobos_squadmanagerDisplay];
+uiNamespace setVariable["Phobos_squadmanagerDisplay", Phobos_squadmanagerDisplay];
 
 // Script parameters
 private ["_mode", "_params"];
@@ -1244,10 +1244,6 @@ switch _mode do
 		_listboxGroups 	= _display displayCtrl IDC_DYNAMICGROUPS_LISTBOXGROUPS;
 		_index 		= tvCurSel _listboxGroups;
 		_groupUniqueId 	= _listboxGroups tvData _index;
-
-		if (_index isEqualTo missionNamespace getVariable ["selected_groupandplayer", [-1, -1]]) then {
-			missionNamespace setVariable ["selected_groupandplayer", [-1, -1]];
-		};
 
 		/*private "_group";
 		_group = ["GetGroupByName", [_groupUniqueId, side group player]] call Phobos_squadmanagerDynamicGroups;

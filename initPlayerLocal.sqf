@@ -15,16 +15,17 @@ if (!hasInterface) then {
 	#include "client\_compile.sqf";
 	#include "shared\_compile.sqf";
 
-	[] call Phobos_coreTalk;
+	[] call Phobos_interactionTalk;
 	[] call Phobos_mapClick;
-	[] call Phobos_miscShout;
+	//[] call Phobos_miscHeadgearEss;
+	//[] call Phobos_miscHeadgearVisor;
 
 	["InitializePlayer", [player]] call Phobos_squadmanagerDynamicGroups;
 
 	[Phobos_miscPickup, 1] call CBA_fnc_addPerFrameHandler;
 
 	[{
-		if (behaviour player == "COMBAT") then {
+		if (time - (player getVariable ["phobos_last_fired", 0]) < 60) then {
 			{
 				[_x, "COMBAT"] remoteExecCall ["setBehaviour", _x]; 
 			} forEach (player nearEntities 100);
