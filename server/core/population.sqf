@@ -40,5 +40,4 @@ _housesRemote = [housesRemote] call CBA_fnc_shuffle;
         };
         default { };
     };
-	
 } forEach unitArrayRespawn;

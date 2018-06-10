@@ -2,7 +2,7 @@ _actionTalk = ["phobos_action_talk", "Talk", "", {
 	params ["_target", "_player", "_param"];
 	if (_target getVariable ["phobos_ai_friendly", false]) then {
 		if (_target getVariable ["phobos_ai_intel", true]) then {
-			_target setDir (_target getRelDir _player) + (getDir _target);
+			[_target, (_target getRelDir _player) + (getDir _target)] remoteExecCall ["setDir", _target];
 			_player setDir (_player getRelDir _target) + (getDir _player);
 			[_target, "Acts_CivilTalking_2"] remoteExecCall ["playMoveNow", _target];
 			_player switchMove "Acts_NATOCommanderArrival_Commander_5";

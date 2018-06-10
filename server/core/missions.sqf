@@ -1,12 +1,5 @@
 //[pos, completeCondition, completeStatement, args, intelRadius, markerZone]
 {
-	_x params ["_missionType", "_count"];
-	if (count (missions select _forEachIndex) < _count) then {
-		(missions select _forEachIndex) pushBack (call compile (format ["[] call Phobos_mission%1", _missionType]));
-	};
-} forEach missionTypes;
-
-{
 	_mission = _x;
 	_missionType = (missionTypes select _forEachIndex) select 0;
 	{
@@ -32,5 +25,12 @@
 		};
 	} forEach _mission;
 } forEach missions;
+
+{
+	_x params ["_missionType", "_count"];
+	if (count (missions select _forEachIndex) < _count) then {
+		(missions select _forEachIndex) pushBack (call compile (format ["[] call Phobos_mission%1", _missionType]));
+	};
+} forEach missionTypes;
 
 publicVariable "missions";
