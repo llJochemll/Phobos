@@ -7,7 +7,7 @@ _roads = _centerPos nearRoads 50;
 _roads = [_roads] call CBA_fnc_shuffle;
 
 _iedIds = [];
-for "_i" from 1 to (count _roads) do {
+for "_i" from 0 to (count _roads) - 1 do {
 	_pos = (getPos (_roads select _i)) getPos [random 10, random 360];
 	_iedIds pushBack ([selectRandom ieds, _pos, 0] call Phobos_spawnVirtualVehicle);
 };

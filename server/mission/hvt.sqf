@@ -1,5 +1,14 @@
-_house = selectRandom ((housesVillages + housesTowns + housesCapitals + housesRemote) select {count (_x buildingPos -1) > 10 && west countSide (_x nearEntities 1000) == 0});
+if (count (zones select {(_x select 2) < 0.3}) == 0) exitWith {};
 
+_house = objNull;
+_houses = ((housesVillages + housesTowns + housesCapitals + housesRemote) select {count (_x buildingPos -1) > 20 && west countSide (_x nearEntities 1000) == 0});
+while {isNull _house} do {
+	_house = selectRandom _houses;
+
+	if (([getPosATL _house] call Phobos_miscGetZone ) select 2 >= 0.6) then {
+		_house = objNull;
+	};
+};
 _buildingPositions = (_house buildingPos -1) select {lineIntersects [AGLToASL _x, (AGLToASL _x) vectorAdd [0, 0, 10]]};
 
 //Spawn officer and guard

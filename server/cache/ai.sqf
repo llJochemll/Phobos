@@ -17,14 +17,16 @@ _playerPositions = [];
 } forEach (allPlayers select {typeOf (vehicle _x) != "plane"});
 
 {
-    vehicleArray deleteAt _x;
-    [_x, {vehicleArray deleteAt _this;}] remoteExecCall ["BIS_fnc_call", -clientOwner];
+    _id = _x;
+    vehicleArray deleteAt (vehicleArray findIf {_x select 0 == _id});
+    [_id, {vehicleArray deleteAt (unitArray findIf {_x select 0 == _this});}] remoteExecCall ["BIS_fnc_call", 0];
 } forEach vehicleArrayDelete;
 vehicleArrayDelete = [];
 
 {
-    unitArray deleteAt _x;
-    [_x, {unitArray deleteAt _this;}] remoteExecCall ["BIS_fnc_call", -clientOwner];
+    _id = _x;
+    unitArray deleteAt (unitArray findIf {_x select 0 == _id});
+    [_id, {unitArray deleteAt (unitArray findIf {_x select 0 == _this});}] remoteExecCall ["BIS_fnc_call", 0];
 } forEach unitArrayDelete;
 unitArrayDelete = [];
 
@@ -57,7 +59,7 @@ unitArrayDelete = [];
             [[_forEachIndex, _x], {vehicleArray set [_this select 0, _this select 1];}] remoteExecCall ["BIS_fnc_call", 0];
         } else {
             if (isNull (_x select 5)) then {
-                vehicleArrayDelete pushBack _forEachIndex;
+                vehicleArrayDelete pushBack _id;
             };
         };
     };
@@ -70,7 +72,7 @@ _realVehicles = [];
 _realVehicles = _realVehicles - [-1];
 
 //unitArray
-for "_i" from 0 to (count unitArray) step 1 do {
+for "_i" from 0 to (count unitArray) - 1 step 1 do {
     [{
         params ["_array", "_index", "_playerPositions", "_realVehicles"];
         
@@ -219,10 +221,17 @@ for "_i" from 0 to (count unitArray) step 1 do {
 
                 [[_index, _array], {unitArray set [(_this select 0), _this select 1];}] remoteExecCall ["BIS_fnc_call", 0];
             } else {
-                if (isNull (_array select 5)) then {
-                    unitArrayDelete pushBack _index;
+                if (count (_playerPositions select {_x distance2D _pos < 1100}) == 0) then {
+                    _group = group _unit;
+                    deleteVehicle _unit;
+
+                    if (count (units _group) == 0) then {
+                        deleteGroup _group;
+                    };
+
+                    unitArrayDelete pushBack (_array select 0);
                 };
             };    
         };
-    }, [unitArray select _i, _i, _playerPositions, _realVehicles], ((10 / count (unitArray)) * _i)] call CBA_fnc_waitAndExecute;
+    }, [unitArray select _i, _i, _playerPositions, _realVehicles], ((5 / count (unitArray)) * _i)] call CBA_fnc_waitAndExecute;
 };
