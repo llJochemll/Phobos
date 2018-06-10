@@ -7,6 +7,7 @@
 phobosId = 0;
 unitArray = [];
 unitArrayDelete = [];
+unitArrayRespawn = [0,0,0,0];
 vehicleArray = [];
 vehicleArrayDelete = [];
 playerVehicleArray = [];
@@ -22,8 +23,9 @@ vehicleArray = [vehicleArray] call CBA_fnc_shuffle;
 
 ["Initialize", [false, 5, true]] call Phobos_squadmanagerDynamicGroups;
 
-[Phobos_cacheAi, 10] call CBA_fnc_addPerFrameHandler;
+[Phobos_cacheAi, 5] call CBA_fnc_addPerFrameHandler;
 [Phobos_coreMissions, 1] call CBA_fnc_addPerFrameHandler;
+[Phobos_corePopulation, 60] call CBA_fnc_addPerFrameHandler;
 [Phobos_coreZones, 10] call CBA_fnc_addPerFrameHandler;
 
 //Temp
