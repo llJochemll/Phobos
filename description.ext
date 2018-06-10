@@ -17,10 +17,25 @@ class Header {
 class CfgSounds {
 	sounds[] = {};
 	class scream {
-		// how the sound is referred to in the editor (e.g. trigger effects)
 		name = "scream_sound";
-		// filename, volume, pitch
 		sound[] = {"data\sounds\scream.ogg", 4, 1};
 		titles[] = {0,""};
+	};
+};
+
+class Params {
+	class Daytime {
+		title = "Time at start of mission";
+		texts[] = {"0000", "0100", "0200", "0300", "0400", "0500", "0600", "0700", "0800", "0900", "1000", "1100", "1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100", "2200", "2300"};
+		values[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23};
+		default = 12;
+		function = "BIS_fnc_paramDaytime";
+		isGlobal = 1;
+	};
+	class Faction {
+		title = "Faction";
+		texts[] = {"British Army", "US Army", "US Marine Corps"};
+		values[] = {"BA", "USA", "USMC"};
+		default = "USA";
 	};
 };
