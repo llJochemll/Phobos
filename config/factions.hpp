@@ -3,20 +3,62 @@ factions = [
     [
         //Arsenal
         [
-            //Helmets
+            //Common
             [
+                //Helmets
+                [
+                ],
+                //Uniforms
+                [
+                ],
+                //Vests
+                [
+                ],
+                //Weapons
+                [
+                ],
+                //Misc
+                [
+                ]
             ],
-            //Uniforms
+            //Role specific
             [
-            ],
-            //Vests
-            [
-            ],
-            //Weapons
-            [
-            ],
-            //Misc
-            [
+                //Role 0
+                [
+                    //Helmets
+                    [
+                    ],
+                    //Uniforms
+                    [
+                    ],
+                    //Vests
+                    [
+                    ],
+                    //Weapons
+                    [
+                    ],
+                    //Misc
+                    [
+                    ]
+                ],
+                //Role 1
+                [
+                    //Helmets
+                    [
+                    ],
+                    //Uniforms
+                    [
+                    ],
+                    //Vests
+                    [
+                    ],
+                    //Weapons
+                    [
+                    ],
+                    //Misc
+                    [
+                    ]
+                ]
             ]
         ],
         //Vehicles
@@ -47,38 +89,71 @@ factions = [
     [
         //Arsenal
         [
-            //Helmets
+            //Common
             [
-                "rhsusf_ach_helmet_ocp",
-                "rhsusf_ach_helmet_ess_ocp",
-                "rhsusf_ach_helmet_headset_ocp",
-                "rhsusf_ach_helmet_headset_ess_ocp"
+                //Helmets
+                [
+                ],
+                //Uniforms
+                [
+                ],
+                //Vests
+                [
+                ],
+                //Weapons
+                [
+                ],
+                //Misc
+                [
+                ]
             ],
-            //Uniforms
+            //Role specific
             [
-                "",
-                "",
-            ],
-            //Vests
-            [
-                "",
-                "",
-            ],
-            //Weapons
-            [
-                "",
-                ""
-            ],
-            //Misc
-            [
-                "",
-                ""
+                //Role 0
+                [
+                    //Helmets
+                    [
+                    ],
+                    //Uniforms
+                    [
+                    ],
+                    //Vests
+                    [
+                    ],
+                    //Weapons
+                    [
+                    ],
+                    //Misc
+                    [
+                    ]
+                ],
+                //Role 1
+                [
+                    //Helmets
+                    [
+                    ],
+                    //Uniforms
+                    [
+                    ],
+                    //Vests
+                    [
+                    ],
+                    //Weapons
+                    [
+                    ],
+                    //Misc
+                    [
+                    ]
+                ]
             ]
         ],
         //Vehicles
         [
             //Cars
             [
+                //Format = [classname, displayname, points, initscript]
+                ["classname1", "car1", 0, {}],
+                ["classname2", "car2", 0, {}]
             ],
             //APC
             [
@@ -103,20 +178,62 @@ factions = [
     [
         //Arsenal
         [
-            //Helmets
+            //Common
             [
+                //Helmets
+                [
+                ],
+                //Uniforms
+                [
+                ],
+                //Vests
+                [
+                ],
+                //Weapons
+                [
+                ],
+                //Misc
+                [
+                ]
             ],
-            //Uniforms
+            //Role specific
             [
-            ],
-            //Vests
-            [
-            ],
-            //Weapons
-            [
-            ],
-            //Misc
-            [
+                //Role 0
+                [
+                    //Helmets
+                    [
+                    ],
+                    //Uniforms
+                    [
+                    ],
+                    //Vests
+                    [
+                    ],
+                    //Weapons
+                    [
+                    ],
+                    //Misc
+                    [
+                    ]
+                ],
+                //Role 1
+                [
+                    //Helmets
+                    [
+                    ],
+                    //Uniforms
+                    [
+                    ],
+                    //Vests
+                    [
+                    ],
+                    //Weapons
+                    [
+                    ],
+                    //Misc
+                    [
+                    ]
+                ]
             ]
         ],
         //Vehicles
