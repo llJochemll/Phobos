@@ -15,6 +15,7 @@ if (!hasInterface) then {
 	#include "client\_compile.sqf";
 	#include "shared\_compile.sqf";
 
+	[] call Phobos_interactionInterrogate;
 	[] call Phobos_interactionTalk;
 	[] call Phobos_mapClick;
 	//[] call Phobos_miscHeadgearEss;

@@ -5,6 +5,7 @@
 #include "shared\_compile.sqf";
 
 phobosId = 0;
+bomberCount = 0;
 
 [] call Phobos_initHouses;
 [] call Phobos_initEnemy;

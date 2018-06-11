@@ -27,7 +27,7 @@ player addAction ["<t color='#DD2222'>Stop</t>", {
 					}, [_x]] call CBA_fnc_waitUntilAndExecute;
 				};
 			} else {
-				if (abs ((abs ((player getRelDir _x) - 180)) - 180) < 45 && (count (weapons _x) == 0 || random 1 > 0.95) && side _x != west) then {
+				if (abs ((abs ((player getRelDir _x) - 180)) - 180) < 45 && (count (weapons _x) == 0 || random 1 > 0.90 || east countSide (_x nearEntities 100) < 3) && side _x != west) then {
 					doStop _x;
 					["ACE_captives_setSurrendered", [_x, true], _x] call CBA_fnc_targetEvent;
 					[{

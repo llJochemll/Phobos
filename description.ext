@@ -35,7 +35,7 @@ class Params {
 	class Faction {
 		title = "Faction";
 		texts[] = {"British Army", "US Army", "US Marine Corps"};
-		values[] = {"BA", "USA", "USMC"};
-		default = "USA";
+		values[] = {0, 1, 2};
+		default = 1;
 	};
 };

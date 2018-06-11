@@ -1,5 +1,6 @@
 _actionTalk = ["phobos_action_talk", "Talk", "", {
 	params ["_target", "_player", "_param"];
+
 	if (_target getVariable ["phobos_ai_friendly", false]) then {
 		if (_target getVariable ["phobos_ai_intel", true]) then {
 			[_target, (_target getRelDir _player) + (getDir _target)] remoteExecCall ["setDir", _target];
@@ -17,12 +18,14 @@ _actionTalk = ["phobos_action_talk", "Talk", "", {
 				_player switchMove "amovpercmstpslowwrfldnon";
 			}, {
 				(_this select 0) params ["_target", "_player", "_param"];
+
 				[_target, ""] remoteExecCall ["switchMove", _target];
 				_player switchMove "amovpercmstpslowwrfldnon";
 			}, "Talking", {
 				(_this select 0) params ["_target", "_player", "_param"];
-				behaviour _target == "SAFE"
-			}] call ace_common_fnc_progressBar
+				
+				behaviour _target == "SAFE" && alive _target
+			}] call ace_common_fnc_progressBar;
 		} else {
 			_target globalChat (selectRandom ["I have already told you what I know", "You already know everthing"]);
 		};
@@ -42,6 +45,7 @@ _actionTalk = ["phobos_action_talk", "Talk", "", {
 	};
 }, {
 	params ["_target", "_player", "_param"];
+
 	behaviour _target == "SAFE" && side _target == civilian
 }, {}, []] call ace_interact_menu_fnc_createAction;
 ["CAManBase", 0, ["ACE_Head"], _actionTalk, true] call ace_interact_menu_fnc_addActionToClass;

@@ -102,7 +102,9 @@ if (isNull (_array select 5) && (_array select 1) >= 0) then {
 
 		_array set [6, damage _unit];
 		_array set [7, skill _unit];
-		_array set [8, side _unit];
+		if (!(captive _unit)) then {
+			_array set [8, side _unit];
+		};
 		_array set [9, behaviour _unit];
 		_waypoints = [];
 		if (count (waypoints _unit) > 1) then {
