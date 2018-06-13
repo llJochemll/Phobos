@@ -1,1 +1,0 @@
-Phobos_intelAdd = compile preprocessFileLineNumbers "server\intel\add.sqf";
