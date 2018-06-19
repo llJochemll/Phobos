@@ -7,6 +7,8 @@
 phobosId = 0;
 bomberCount = 0;
 
+publicVariable "phobosId";
+
 [] call Phobos_initHouses;
 [] call Phobos_initEnemy;
 [] call Phobos_initCivilian;

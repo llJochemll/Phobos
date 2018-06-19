@@ -2,7 +2,7 @@ if (count (zones select {(_x select 2) < 0.3}) == 0) exitWith {};
 
 _location = locationNull;
 _locations = nearestLocations [[worldSize / 2, worldSize / 2], ["NameVillage", "NameCity", "NameCityCapital"], worldSize*2.0^0.5];
-while {isNull _locations} do {
+while {isNull _location} do {
 	_location = selectRandom _locations;
 
 	if (([getPos _location] call Phobos_miscGetZone) select 2 >= 0.3) then {
@@ -16,7 +16,7 @@ for "_i" from 1 to 7 do {
 	[(getPos _location) getPos [random 500, random 360], unitsEnemy, 5 + (random 3), east] call Phobos_spawnVirtualGroup;
 };
 
-_marker = createMarker [format ["phobos_marker_mission_%1", phobosId], getPosATL _house];
+_marker = createMarker [format ["phobos_marker_mission_%1", [] call Phobos_commonNewId], (getPos _location)];
 _marker setMarkerShape "ELLIPSE";
 _marker setMarkerBrush "SolidBorder";
 _marker setMarkerColor "ColorOPFOR";

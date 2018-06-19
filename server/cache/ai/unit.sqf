@@ -1,6 +1,20 @@
 params ["_index", "_playerPositions", "_realVehicles"];
 
-hint (str _index);
+if (_index mod 100 == 0) then {
+	_playerPositions = [];
+	{
+		_pos = getPosATL _x;
+		if (count (_playerPositions select {_x distance2D _pos < 100}) == 0) then {
+			_playerPositions pushBack _pos;
+		};
+	} forEach (allPlayers select {typeOf (vehicle _x) != "plane"});
+
+	_realVehicles = [];
+	{
+		_realVehicles pushBackUnique ([_x] call Phobos_commonId);
+	} forEach vehicles;
+	_realVehicles = _realVehicles - [-1];
+};
 
 _array = unitArray select _index;
 

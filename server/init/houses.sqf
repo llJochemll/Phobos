@@ -18,7 +18,7 @@ _houses = ((nearestObjects [[worldSize/2,worldSize/2], ["house"], (worldSize*2^0
 {
     if (count (_x buildingPos -1) > 3) then {
         _x setVehicleVarName format["house_%1", _forEachIndex];
-        if ((getPosWorld _x) inArea "mrk_base_0" || (getPosWorld _x) inArea "mrk_base_1" || (getPosWorld _x) inArea "mrk_base_2" || (getPosWorld _x) inArea "mrk_base_3") then {
+        if ((getPosWorld _x) inArea "phobos_marker_base") then {
             housesBlack pushBack _x;
         } else {
             if ((getPosWorld _x) inArea "mrk_safeZone") then {

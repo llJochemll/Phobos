@@ -17,6 +17,7 @@ if (!hasInterface) then {
 
 	[] call Phobos_interactionInterrogate;
 	[] call Phobos_interactionTalk;
+	[] call Phobos_mapBaseMarkers;
 	[] call Phobos_mapClick;
 	//[] call Phobos_miscHeadgearEss;
 	//[] call Phobos_miscHeadgearVisor;

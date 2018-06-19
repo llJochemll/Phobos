@@ -3,8 +3,8 @@ _housesRemote = [housesRemote] call CBA_fnc_shuffle;
 
 {
 	[getPosATL _x, unitsEnemy, 2 + (random 3), east] call Phobos_spawnVirtualGroup;
-} forEach (_housesDense select [0, (count _housesDense) * 0.03]);
+} forEach (_housesDense select [0, (count _housesDense) * 0.02]);
 
 {
 	[getPosATL _x, unitsEnemy, 3 + (random 3), east] call Phobos_spawnVirtualGroup;
-} forEach (_housesRemote select [0, (count _housesRemote) * 0.07]);
+} forEach (_housesRemote select [0, (count _housesRemote) * 0.08]);

@@ -12,7 +12,7 @@ if (isNull (_array select 3)) then {
 		_vehicle setDir (_array select 5);
 		_array set [3, _vehicle];
 		
-		[[_forEachIndex, _array], {vehicleArray set [_this select 0, _this select 1];}] remoteExecCall ["BIS_fnc_call", 0];
+		[[_index, _array], {vehicleArray set [_this select 0, _this select 1];}] remoteExecCall ["BIS_fnc_call", 0];
 	};
 } else {
 	_id = _array select 0;
@@ -26,9 +26,9 @@ if (isNull (_array select 3)) then {
 			deleteVehicle _vehicle;
 		};
 
-		[[_forEachIndex, _array], {vehicleArray set [_this select 0, _this select 1];}] remoteExecCall ["BIS_fnc_call", 0];
+		[[_index, _array], {vehicleArray set [_this select 0, _this select 1];}] remoteExecCall ["BIS_fnc_call", 0];
 	} else {
-		if (isNull (_array select 5)) then {
+		if (isNull (_array select 3)) then {
 			vehicleArrayDelete pushBack _id;
 		};
 	};

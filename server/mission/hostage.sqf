@@ -12,13 +12,11 @@ while {isNull _house} do {
 _buildingPositions = (_house buildingPos -1) select {lineIntersects [AGLToASL _x, (AGLToASL _x) vectorAdd [0, 0, 10]]};
 
 //Spawn officer and guard
-_hostageGroupId = phobosId;
-phobosId = phobosId + 1;
+_hostageGroupId = [] call Phobos_commonNewId;
 _hostagePos = selectRandom _buildingPositions;
 _hostageId = [selectRandom unitsHostage, _hostagePos, _hostageGroupId, civilian, [], [["phobos_ai_garrison", true], ["phobos_ai_hastask", true], ["phobos_ai_hostage", true]]] call Phobos_spawnVirtualUnit;
 
-_garrisonGroupId = phobosId;
-phobosId = phobosId + 1;
+_garrisonGroupId = [] call Phobos_commonNewId;
 for "_i" from 1 to 5 do {
 	[selectRandom unitsEnemy, selectRandom _buildingPositions, _garrisonGroupId, east, [], [["phobos_ai_garrison", true], ["phobos_ai_hastask", true]]] call Phobos_spawnVirtualUnit;
 };
@@ -28,7 +26,7 @@ for "_i" from 1 to 2 do {
 	[getPosATL _house, unitsEnemy, 5 + (random 3), east] call Phobos_spawnVirtualGroup;
 };
 
-_marker = createMarker [format ["phobos_marker_mission_%1", phobosId], getPosATL _house];
+_marker = createMarker [format ["phobos_marker_mission_%1", [] call Phobos_commonNewId], getPosATL _house];
 _marker setMarkerShape "ELLIPSE";
 _marker setMarkerBrush "SolidBorder";
 _marker setMarkerColor "ColorOPFOR";

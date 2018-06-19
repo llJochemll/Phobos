@@ -19,7 +19,7 @@ _housesRemote = [housesRemote] call CBA_fnc_shuffle;
         case 1: {
             if ((unitArrayRespawn select 1) > 5) then {
 				_count = 0;
-				if (random 10 > 7) then {
+				if (random 10 > 8) then {
 					_count = round (2 + (random 3));
 					[getPosATL (_housesDense select (_housesDense findIf {([getPosATL _x] call Phobos_miscGetZone) select 2 <= 0.6})), unitsEnemy, _count, east] call Phobos_spawnVirtualGroup;
 				} else {

@@ -8,10 +8,7 @@ if (_newId != -1) then {
 
 _thingId = _thing getVariable ["phobos_common_id", -1];
 if (_thingId == -1) then {
-	_thing setVariable ["phobos_common_id", phobosId, true];
-	phobosId = phobosId + 1;
+	_thing setVariable ["phobos_common_id", [] call Phobos_commonNewId, true];
 };
-
-publicVariable "phobosId";
 
 _thingId

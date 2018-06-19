@@ -14,7 +14,7 @@ for "_i" from 0 to (count _roads) - 1 do {
 
 [getPosATL _house, unitsEnemy, 5 + (random 3), east] call Phobos_spawnVirtualGroup;
 
-_marker = createMarker [format ["phobos_marker_mission_%1", phobosId], _centerPos];
+_marker = createMarker [format ["phobos_marker_mission_%1", [] call Phobos_commonNewId], _centerPos];
 _marker setMarkerShape "ELLIPSE";
 _marker setMarkerBrush "SolidBorder";
 _marker setMarkerColor "ColorOPFOR";
