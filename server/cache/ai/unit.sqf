@@ -3,9 +3,9 @@ params ["_index", "_playerPositions", "_realVehicles"];
 if (_index mod 100 == 0) then {
 	_playerPositions = [];
 	{
-		_pos = getPosATL _x;
+		_pos = eyePos _x;
 		if (count (_playerPositions select {_x distance2D _pos < 100}) == 0) then {
-			_playerPositions pushBack _pos;
+			_playerPositions pushBack [player, _pos];
 		};
 	} forEach (allPlayers select {typeOf (vehicle _x) != "plane"});
 
@@ -18,9 +18,12 @@ if (_index mod 100 == 0) then {
 
 _array = unitArray select _index;
 
-_pos = _array select 2;
+_pos = AGLToASL (_array select 2);
+_pos = [_pos select 0, _pos select 1, (_pos select 2) + 1.8];
 if (isNull (_array select 5) && (_array select 1) >= 0) then {
-	if (count (_playerPositions select {_x distance2D _pos < 1100}) != 0 || (((_array select 3) select 0) in _realVehicles && ((_array select 3) select 0) != -1)) then {
+	if (count (_playerPositions select {(_x select 1) distance2D _pos  < 100}) != 0
+		|| count (_playerPositions select {(_x select 1) distance2D _pos  < 1000 && count (lineIntersectsSurfaces [(_x select 1), _pos, (_x select 0), objNull, true, 2]) < 2}) != 0 
+		|| (((_array select 3) select 0) in _realVehicles && ((_array select 3) select 0) != -1)) then {
 		_group = grpNull;
 		if (isNil {[_array select 1] call Phobos_commonGet}) then {
 			_group = createGroup (_array select 8);
@@ -154,7 +157,9 @@ if (isNull (_array select 5) && (_array select 1) >= 0) then {
 		} forEach (allVariables _unit);
 		_array set [11, _variables];
 
-		if (count (_playerPositions select {_x distance2D _pos < 1100}) == 0 && !(((_array select 3) select 0) in _realVehicles)) then {
+		if (!(count (_playerPositions select {(_x select 1) distance2D _pos  < 100}) != 0
+			|| count (_playerPositions select {(_x select 1) distance2D _pos  < 1000 && count (lineIntersectsSurfaces [(_x select 1), _pos, (_x select 0), _unit, true, 2]) < 2}) != 0
+			|| (((_array select 3) select 0) in _realVehicles && ((_array select 3) select 0) != -1))) then {
 			_group = group _unit;
 			deleteVehicle _unit;
 
@@ -165,7 +170,9 @@ if (isNull (_array select 5) && (_array select 1) >= 0) then {
 
 		[[_index, _array], {unitArray set [(_this select 0), _this select 1];}] remoteExecCall ["BIS_fnc_call", 0];
 	} else {
-		if (count (_playerPositions select {_x distance2D _pos < 1100}) == 0) then {
+		if (!(count (_playerPositions select {(_x select 1) distance2D _pos  < 100}) != 0
+			|| count (_playerPositions select {(_x select 1) distance2D _pos  < 1000 && count (lineIntersectsSurfaces [(_x select 1), _pos, (_x select 0), _unit, true, 2]) < 2}) != 0 
+			|| (((_array select 3) select 0) in _realVehicles && ((_array select 3) select 0) != -1))) then {
 			_group = group _unit;
 			deleteVehicle _unit;
 

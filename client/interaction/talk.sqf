@@ -46,6 +46,6 @@ _actionTalk = ["phobos_action_talk", "Talk", "", {
 }, {
 	params ["_target", "_player", "_param"];
 
-	behaviour _target == "SAFE" && side _target == civilian
+	behaviour _target == "SAFE" && _target getVariable ["phobos_ai_side", civilian] == civilian
 }, {}, []] call ace_interact_menu_fnc_createAction;
 ["CAManBase", 0, ["ACE_Head"], _actionTalk, true] call ace_interact_menu_fnc_addActionToClass;

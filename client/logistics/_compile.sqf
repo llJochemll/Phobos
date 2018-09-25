@@ -1,0 +1,1 @@
+Phobos_logisticsBuild = compile preprocessFileLineNumbers "client\logistics\build.sqf";

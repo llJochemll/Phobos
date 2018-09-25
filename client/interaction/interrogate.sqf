@@ -38,6 +38,6 @@ _actionInterrogate = ["phobos_action_interrogate", "Interrogate", "", {
 }, {
 	params ["_target", "_player", "_param"];
 
-	side _target == east
+	_target getVariable ["phobos_ai_side", civilian] == east
 }, {}, []] call ace_interact_menu_fnc_createAction;
 ["CAManBase", 0, ["ACE_Head"], _actionInterrogate, true] call ace_interact_menu_fnc_addActionToClass;
