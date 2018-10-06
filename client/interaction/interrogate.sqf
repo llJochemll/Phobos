@@ -6,7 +6,7 @@ _actionInterrogate = ["phobos_action_interrogate", "Interrogate", "", {
 		_player setDir (_player getRelDir _target) + (getDir _player);
 		_player switchMove "Acts_NATOCommanderArrival_Commander_5";
 
-		[60, _this, {
+		[40, _this, {
 			(_this select 0) params ["_target", "_player", "_param"];
 
 			_multiplier = 1;
@@ -38,6 +38,6 @@ _actionInterrogate = ["phobos_action_interrogate", "Interrogate", "", {
 }, {
 	params ["_target", "_player", "_param"];
 
-	_target getVariable ["phobos_ai_side", civilian] == east
+	alive _target && _target getVariable ["phobos_ai_side", civilian] == east
 }, {}, []] call ace_interact_menu_fnc_createAction;
 ["CAManBase", 0, ["ACE_Head"], _actionInterrogate, true] call ace_interact_menu_fnc_addActionToClass;

@@ -7,8 +7,8 @@
 		_zone set [2, _approval + (0.002 * (count _playersInZone))];
 		_zone set [3, _morale - (0.002 * (count _playersInZone))];
 	} else {
-		_zone set [2, _approval + 0.001];
-		_zone set [3, _morale - 0.001];
+		_zone set [2, _approval - 0.001];
+		_zone set [3, _morale + 0.001];
 	};
 
 	//Keep approval and morale between 0 and 1

@@ -18,7 +18,11 @@ _marker setMarkerColor "ColorOPFOR";
 _mission = [getPosATL _house, {
 	params ["_cacheId"];
 
-	_complete = (vehicleArray findIf {(_x select 0) == _cacheId}) == -1;
+	_complete = false;
+	_cache = [_cacheId] call Phobos_commonGet;
+	if (isNil {_cache}) exitWith {_complete};
+
+	_complete = !(alive _cache);
 	_complete
 }, {
 	params ["_cacheId"];

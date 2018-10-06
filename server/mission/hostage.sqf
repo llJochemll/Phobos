@@ -41,7 +41,7 @@ _mission = [getPosATL _house, {
 	_complete = !(alive _hostage) || _hostage inArea phobos_trigger_prison;
 	_complete
 }, {
-	params ["_officerId"];
+	params ["_hostageId"];
 
 	_hostage = [_hostageId] call Phobos_commonGet;
 	if (isNil {_hostage} || !(alive _hostage)) then {

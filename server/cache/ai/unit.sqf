@@ -21,7 +21,7 @@ _array = unitArray select _index;
 _pos = AGLToASL (_array select 2);
 _pos = [_pos select 0, _pos select 1, (_pos select 2) + 1.8];
 if (isNull (_array select 5) && (_array select 1) >= 0) then {
-	if (count (_playerPositions select {(_x select 1) distance2D _pos  < 100}) != 0
+	if (count (_playerPositions select {(_x select 1) distance2D _pos  < 200}) != 0
 		|| count (_playerPositions select {(_x select 1) distance2D _pos  < 1000 && count (lineIntersectsSurfaces [(_x select 1), _pos, (_x select 0), objNull, true, 2]) < 2}) != 0 
 		|| (((_array select 3) select 0) in _realVehicles && ((_array select 3) select 0) != -1)) then {
 		_group = grpNull;
@@ -157,8 +157,8 @@ if (isNull (_array select 5) && (_array select 1) >= 0) then {
 		} forEach (allVariables _unit);
 		_array set [11, _variables];
 
-		if (!(count (_playerPositions select {(_x select 1) distance2D _pos  < 100}) != 0
-			|| count (_playerPositions select {(_x select 1) distance2D _pos  < 1000 && count (lineIntersectsSurfaces [(_x select 1), _pos, (_x select 0), _unit, true, 2]) < 2}) != 0
+		if (!(count (_playerPositions select {(_x select 1) distance2D _pos  < 200}) != 0
+			|| count (_playerPositions select {(_x select 1) distance2D _pos  < 1000 && (count (lineIntersectsSurfaces [(_x select 1), _pos, (_x select 0), _unit, true, 2]) < 2 || behaviour _unit == "COMBAT")}) != 0 
 			|| (((_array select 3) select 0) in _realVehicles && ((_array select 3) select 0) != -1))) then {
 			_group = group _unit;
 			deleteVehicle _unit;
@@ -170,8 +170,8 @@ if (isNull (_array select 5) && (_array select 1) >= 0) then {
 
 		[[_index, _array], {unitArray set [(_this select 0), _this select 1];}] remoteExecCall ["BIS_fnc_call", 0];
 	} else {
-		if (!(count (_playerPositions select {(_x select 1) distance2D _pos  < 100}) != 0
-			|| count (_playerPositions select {(_x select 1) distance2D _pos  < 1000 && count (lineIntersectsSurfaces [(_x select 1), _pos, (_x select 0), _unit, true, 2]) < 2}) != 0 
+		if (!(count (_playerPositions select {(_x select 1) distance2D _pos  < 200}) != 0
+			|| count (_playerPositions select {(_x select 1) distance2D _pos  < 1000 && (count (lineIntersectsSurfaces [(_x select 1), _pos, (_x select 0), _unit, true, 2]) < 2 || behaviour _unit == "COMBAT")}) != 0 
 			|| (((_array select 3) select 0) in _realVehicles && ((_array select 3) select 0) != -1))) then {
 			_group = group _unit;
 			deleteVehicle _unit;

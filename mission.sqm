@@ -8,7 +8,7 @@ class EditorData
 	toggles=1025;
 	class ItemIDProvider
 	{
-		nextID=4715;
+		nextID=4716;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={3929.6616,1088.9197,5880.6499};
-		dir[]={-0.68860149,-0.71457094,-0.12423953};
-		up[]={-0.70326042,0.69951934,-0.12688519};
-		aside[]={-0.1775807,-3.1781383e-008,0.9842158};
+		pos[]={3807.6865,1057.4194,6198.2759};
+		dir[]={-0.025643572,-0.31072509,0.95021158};
+		up[]={-0.0083827032,0.95048958,0.31065753};
+		aside[]={0.99969798,-8.7794615e-007,0.026978133};
 	};
 };
 binarizationWanted=0;
@@ -354,6 +354,25 @@ class CustomAttributes
 		name="Multiplayer";
 		class Attribute0
 		{
+			property="RespawnButton";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"SCALAR"
+						};
+					};
+					value=0;
+				};
+			};
+		};
+		class Attribute1
+		{
 			property="RespawnTemplates";
 			expression="true";
 			class Value
@@ -416,25 +435,6 @@ class CustomAttributes
 				};
 			};
 		};
-		class Attribute1
-		{
-			property="RespawnButton";
-			expression="true";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"SCALAR"
-						};
-					};
-					value=0;
-				};
-			};
-		};
 		nAttributes=2;
 	};
 };
@@ -463,7 +463,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=2206;
+		items=2207;
 		class Item0
 		{
 			dataType="Object";
@@ -620,8 +620,8 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={64.431885,1111.7246,19572.871};
-				angles[]={6.0704503,0,0.41534731};
+				position[]={64.431999,1111.7246,19572.871};
+				angles[]={6.070447,0,0.41535345};
 			};
 			id=9;
 			type="ModuleCurator_F";
@@ -680,7 +680,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="";
+							value="zeusMod";
 						};
 					};
 				};
@@ -38844,6 +38844,22 @@ class Mission
 			b=282.08099;
 			id=4704;
 			atlOffset=18.164063;
+		};
+		class Item2206
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={3862.7476,1045.5813,6136.1123};
+				angles[]={0.031019596,0,6.2828403};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=4715;
+			type="B_Slingload_01_Cargo_F";
 		};
 	};
 };

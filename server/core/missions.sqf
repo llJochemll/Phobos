@@ -11,7 +11,7 @@
 				_args call _completeStatement;
 
 				deleteMarker _markerZone;
-				_mission deleteAt _index;
+				missions deleteAt _index;
 			};
 
 			if (_intelRadius > 100 || _intelRadius <= 0) then {

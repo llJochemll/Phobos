@@ -24,7 +24,7 @@ if (side _unit == civilian) then {
 };
 
 _unit setVariable ["phobos_ai_intel", true, true];
-_unit setVariable ["phobos_ai_side", side _unit];
+_unit setVariable ["phobos_ai_side", side _unit, true];
 
 //Event handler for "respawning"
 _unit addEventHandler ["Killed", {

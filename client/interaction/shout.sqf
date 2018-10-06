@@ -47,4 +47,4 @@ player addAction ["<t color='#DD2222'>Stop</t>", {
 			_x reveal [player, 4];
 		};
 	} forEach ((player nearEntities 50) select {[objNull, "VIEW"] checkVisibility [eyePos player, eyePos _x] > 0.5});
-}, [], 10];
+}, [], 10, true, false, "isNull (objectParent _this)"];
