@@ -1,13 +1,13 @@
 {
 	_groupIndex = _forEachIndex;
-	if(isNull (_x select 2))then{
+	if (isNull (_x select 2)) then {
 		_grp = createGroup [west,false];
-		_grp setGroupId[_x select 0];
-		_grp setVariable["BIS_dg_ins", _x select 1, true];
-		_grp setVariable["max_units", _x select 3, true];
+		_grp setGroupId [_x select 0];
+		_grp setVariable ["BIS_dg_ins", _x select 1, true];
+		_grp setVariable ["max_units", _x select 3, true];
 		_leader = leader _grp;
 		_data = [_x select 1, _x select 0, false];
-		playerGroups select _forEachIndex set[2,_grp];
+		playerGroups select _forEachIndex set [2, _grp];
 
 		["RegisterGroup", [_grp, _leader, _data]] call Phobos_squadmanagerDynamicGroups;
 	};

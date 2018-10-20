@@ -9,7 +9,7 @@ _playerPositions = [];
     if (count (_playerPositions select {_x distance2D _pos < 100}) == 0) then {
         _playerPositions pushBack _pos;
     };
-} forEach (allPlayers select {typeOf (vehicle _x) != "plane"});
+} forEach (allPlayers select {!((vehicle _x) isKindOf "plane")});
 
 {
     _id = _x;

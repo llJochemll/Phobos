@@ -1,3 +1,4 @@
+#include "arsenal\_compile.sqf";
 #include "interaction\_compile.sqf";
 #include "logistics\_compile.sqf";
 #include "map\_compile.sqf";

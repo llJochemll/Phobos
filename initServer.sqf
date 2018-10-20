@@ -1,4 +1,5 @@
 #include "config\classnames.hpp";
+#include "config\factions.hpp";
 #include "config\groups.hpp";
 #include "config\missions.hpp";
 #include "server\_compile.sqf";

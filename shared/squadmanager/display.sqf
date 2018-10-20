@@ -1290,13 +1290,13 @@ switch _mode do
 				deleteVehicle _unit;
 
 				if(_groupIndexPrev != -1)then{
-					(((playerGroups select _groupIndexPrev) select 4) select _roleIndexPrev) set[2,objNull];
+					(((playerGroups select _groupIndexPrev) select 4) select _roleIndexPrev) set [2, objNull];
 				};
 
-				(((playerGroups select _groupIndex) select 4) select _roleIndex) set[2,(_this select 1)];
+				(((playerGroups select _groupIndex) select 4) select _roleIndex) set [2, (_this select 1)];
 				[(_this select 1)] joinSilent _grp;
-				(_this select 1) setVariable["group_index", _groupIndex, true];
-				(_this select 1) setVariable["role_index", _roleIndex, true];
+				(_this select 1) setVariable ["group_index", _groupIndex, true];
+				(_this select 1) setVariable ["role_index", _roleIndex, true];
 				if(_roleIndex == 0)then{
 					_grp selectLeader (_this select 1);
 				};

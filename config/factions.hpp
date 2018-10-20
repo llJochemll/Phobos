@@ -93,9 +93,18 @@ factions = [
             [
                 //Helmets
                 [
+                    "rhsusf_ach_helmet_ocp",
+                    "rhsusf_ach_helmet_ess_ocp",
+                    "rhsusf_ach_helmet_headset_ocp",
+                    "rhsusf_ach_helmet_headset_ess_ocp"
                 ],
                 //Uniforms
                 [
+                    "rhs_uniform_cu_ocp",
+                    "rhs_uniform_cu_ocp_101st",
+                    "rhs_uniform_cu_ocp_10th",
+                    "rhs_uniform_cu_ocp_1stcav",
+                    "rhs_uniform_cu_ocp_82nd"
                 ],
                 //Vests
                 [
@@ -103,8 +112,27 @@ factions = [
                 //Weapons
                 [
                 ],
+                //Attachments
+                [
+                    "rhsusf_acc_ACOG",
+
+                    "rhsusf_acc_anpeq15side_bk"
+                ],
+                //Magazines
+                [
+                    "rhs_mag_30Rnd_556x45_M855A1_Stanag",
+                    "rhsusf_200Rnd_556x45_box"
+                ],
                 //Misc
                 [
+                    "rhs_googles_black",
+                    "rhsusf_shemagh_gogg_tan",
+
+                    "rhsusf_ANPVS_14",
+                    
+                    "ItemMap",
+                    "ItemCompass",
+                    "ItemWatch"
                 ]
             ],
             //Role specific
@@ -119,9 +147,17 @@ factions = [
                     ],
                     //Vests
                     [
+                        "rhsusf_iotv_ocp_SAW"
                     ],
                     //Weapons
                     [
+                        "rhs_weap_m249_pip_S"
+                    ],
+                    [
+                        "rhsusf_acc_ELCAN"
+                    ],
+                    [
+                        
                     ],
                     //Misc
                     [
@@ -137,12 +173,20 @@ factions = [
                     ],
                     //Vests
                     [
+                        "rhsusf_iotv_ocp_Rifleman"
                     ],
                     //Weapons
                     [
+                        "rhs_weap_m4_carryhandle"
+                    ],
+                    [
+                    ],
+                    [
+                        "rhs_mag_30Rnd_556x45_M855A1_Stanag"
                     ],
                     //Misc
                     [
+
                     ]
                 ]
             ]
