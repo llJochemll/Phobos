@@ -195,18 +195,54 @@ factions = [
         [
             //Cars
             [
-                //Format = [classname, displayname, points, initscript]
-                ["classname1", "car1", 0, {}],
-                ["classname2", "car2", 0, {}]
+                //Format = [classname, points, initscript]
+                ["rhsusf_m1043_d_m2", 0, {}],
+                ["rhsusf_m1043_d_mk19", 0, {}],
+                ["rhsusf_m1043_d", 0, {}],
+                ["rhsusf_m1045_d", 0, {}],
+                ["rhsusf_m998_d_2dr_fulltop", 0, {}],
+                ["rhsusf_m998_d_2dr_halftop", 0, {}],
+                ["rhsusf_m998_d_2dr", 0, {}],
+                ["rhsusf_m998_d_4dr_fulltop", 0, {}],
+                ["rhsusf_m998_d_4dr_halftop", 0, {}],
+                ["rhsusf_m998_d_4dr", 0, {}]
+            ],
+            //MRAP
+            [
+                ["rhsusf_M1220_usarmy_d", 0, {}],
+                ["rhsusf_M1220_M153_M2_usarmy_d", 0, {}],
+                ["rhsusf_M1220_M2_usarmy_d", 0, {}],
+                ["rhsusf_M1220_MK19_usarmy_d", 0, {}],
+                ["rhsusf_M1230_M2_usarmy_d", 0, {}],
+                ["rhsusf_M1230_MK19_usarmy_d", 0, {}],
+                ["rhsusf_M1230a1_usarmy_d", 0, {}],
+                ["rhsusf_M1232_usarmy_d", 0, {}],
+                ["rhsusf_M1232_M2_usarmy_d", 0, {}],
+                ["rhsusf_M1232_MK19_usarmy_d", 0, {}],
+                ["rhsusf_M1237_M2_usarmy_d", 0, {}],
+                ["rhsusf_M1237_MK19_usarmy_d", 0, {}]
             ],
             //APC
             [
+                ["rhsusf_m113d_usarmy_supply", 0, {}],
+                ["rhsusf_m113d_usarmy", 0, {}],
+                ["rhsusf_m113d_usarmy_M240", 0, {}],
+                ["rhsusf_m113d_usarmy_medical", 0, {}],
+                ["rhsusf_m113d_usarmy_MK19", 0, {}],
+                ["rhsusf_m113d_usarmy_unarmed", 0, {}]
             ],
             //IFV
             [
+                ["RHS_M2A3", 0, {}],
+                ["RHS_M2A3_BUSKI", 0, {}],
+                ["RHS_M2A3_BUSKIII", 0, {}],
+                ["RHS_M6", 0, {}]
             ],
             //Tanks
             [
+                ["rhsusf_m1a2sep1d_usarmy", 0, {}],
+                ["rhsusf_m1a2sep1tuskid_usarmy", 0, {}],
+                ["rhsusf_m1a2sep1tuskiid_usarmy", 0, {}]
             ],
             //Helicopters
             [

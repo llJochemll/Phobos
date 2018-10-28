@@ -1,1 +1,0 @@
-hint format ["spawn: %1", this];

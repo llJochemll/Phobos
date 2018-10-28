@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1025;
+	toggles=1537;
 	class ItemIDProvider
 	{
-		nextID=4718;
+		nextID=4760;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={3893.5195,1046.0685,6078.1118};
-		dir[]={0.77201289,0.0062685618,-0.63576514};
-		up[]={-0.0046437355,0.99991566,0.0038217225};
-		aside[]={-0.6357708,-1.4918623e-007,-0.77202004};
+		pos[]={3919.4519,1091.9132,5965.3838};
+		dir[]={0.24312381,-0.89285803,-0.37932739};
+		up[]={0.48183933,0.45016462,-0.75177813};
+		aside[]={-0.84199339,-3.417721e-006,-0.53966743};
 	};
 };
 binarizationWanted=0;
@@ -36790,12 +36790,13 @@ class Mission
 			class PositionInfo
 			{
 				position[]={3931.542,1048.2665,5948.248};
-				angles[]={0.037981652,2.1997037,6.270184};
+				angles[]={0.037981652,5.3317237,6.270184};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
+				name="phobos_vehicle_spawn_ground";
 			};
 			id=4628;
 			type="Land_MedicalTent_01_floor_light_F";
@@ -38821,16 +38822,18 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3921.9695,1049.3621,5946.104};
-				angles[]={0.048959803,0,6.2721801};
+				position[]={3921.9697,1049.3625,5946.104};
+				angles[]={0.048956487,0,6.272172};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
+				name="phobos_vehicle_spawner_ground";
 			};
 			id=4703;
 			type="Land_Laptop_unfolded_F";
+			atlOffset=0.00048828125;
 		};
 		class Item2205
 		{
