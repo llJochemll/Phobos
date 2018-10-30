@@ -26,7 +26,7 @@ while {alive _unit} do {
 	if (!isNull _target) then{
 		_unit doMove getPosATL _target;
 
-		if ((_unit distance2D _target) < 25) then{
+		if ((_unit distance2D _target) < 25) then {
 			[[_unit], {
 				params [["_unit", objNull]];
 				_unit say3D "scream";
@@ -34,7 +34,7 @@ while {alive _unit} do {
 				_unit setDamage 1;
 			}] remoteExec ["BIS_fnc_spawn", 0, true];
 		} else {
-			if ((_unit distance2D _target) < 100)then{
+			if ((_unit distance2D _target) < 100) then {
 				_unit setSpeedMode "FULL";
 			} else {
 				_unit setSpeedMode "LIMITED";

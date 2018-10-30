@@ -246,6 +246,14 @@ factions = [
             ],
             //Helicopters
             [
+                ["RHS_AH64D", 0, {}],
+                ["RHS_CH_47F_10", 0, {}],
+                ["RHS_UH60M_d", 0, {}],
+                ["RHS_UH60M_ESSS_d", 0, {}],
+                ["RHS_UH60M_ESSS2_d", 0, {}],
+                ["RHS_UH60M2_d", 0, {}],
+                ["RHS_UH60M_MEV2_d", 0, {}],
+                ["RHS_UH60M_MEV_d", 0, {}]
             ],
             //Planes
             [

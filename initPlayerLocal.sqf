@@ -24,6 +24,7 @@ if (!hasInterface) then {
 	[] call Phobos_mapBaseMarkers;
 	[] call Phobos_mapClick;
 	[] call Phobos_vehicleSpawnerGround;
+	[] call Phobos_vehicleSpawnerHeli;
 	//[] call Phobos_miscHeadgearEss;
 	//[] call Phobos_miscHeadgearVisor;
 

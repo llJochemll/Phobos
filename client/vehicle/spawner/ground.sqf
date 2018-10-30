@@ -18,7 +18,7 @@ _action = ["phobos_action_vehicle_spawner_ground", "Spawn vehicle", "", {}, {}] 
 		case 3: {
 			_category = "IFVs"
 		};
-		case 0: {
+		case 4: {
 			_category = "Tanks"
 		};
 		default { };
@@ -28,7 +28,6 @@ _action = ["phobos_action_vehicle_spawner_ground", "Spawn vehicle", "", {}, {}] 
 	[phobos_vehicle_spawner_ground, 0, ["ACE_MainActions", "phobos_action_vehicle_spawner_ground"], _action] call ace_interact_menu_fnc_addActionToObject;
 	
 	{
-		hint str _x;
 		_action = ["phobos_action_vehicle_spawn_" + (toLower _category)  + (_x select 0), gettext (configfile >> "CfgVehicles" >> (_x select 0) >> "displayName"), "", {
 			params ["_target", "_player", "_params"];
 			_params params ["_class", "_cost", "_init"];
