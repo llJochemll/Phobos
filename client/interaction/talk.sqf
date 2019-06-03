@@ -11,7 +11,7 @@ _actionTalk = ["phobos_action_talk", "Talk", "", {
 			[20, _this, {
 				(_this select 0) params ["_target", "_player", "_param"];
 
-				[random 5, getPosATL _target] remoteExecCall ["Phobos_intelAdd", 2]; 
+				[(random 5) + 1, getPosATL _target] remoteExecCall ["Phobos_intelAdd", 2]; 
 				_target setVariable ["phobos_ai_intel", false, true];
 
 				[_target, ""] remoteExecCall ["switchMove", _target];

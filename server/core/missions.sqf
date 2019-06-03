@@ -7,11 +7,12 @@
 		_missionType = (missionTypes select _index) select 0;
 		{
 			_x params ["_pos", "_completeCondition", "_completeStatement", "_args", "_intelRadius", "_maxIntelRadius", "_markerZone"];
+			
 			if (_args call _completeCondition) then {
 				_args call _completeStatement;
 
 				deleteMarker _markerZone;
-				missions deleteAt _index;
+				_mission deleteAt _forEachIndex;
 			};
 
 			if (_intelRadius > 100 || _intelRadius <= 0) then {

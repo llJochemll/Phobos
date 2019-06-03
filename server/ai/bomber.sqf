@@ -23,22 +23,22 @@ if (side _unit != east || count (units (group _unit)) > 1) then {
 _startPos = getPosATL _unit;
 while {alive _unit} do {
 	_target = _unit findNearestEnemy (getPosATL _unit);
-	if (!isNull _target) then{
+	if (!isNull _target) then {
 		_unit doMove getPosATL _target;
 
-		if ((_unit distance2D _target) < 25) then {
+		if ((_unit distance2D _target) < 25) exitWith {
 			[[_unit], {
 				params [["_unit", objNull]];
 				_unit say3D "scream";
 				sleep 1.1;
 				_unit setDamage 1;
 			}] remoteExec ["BIS_fnc_spawn", 0, true];
+		};
+
+		if ((_unit distance2D _target) < 100) then {
+			_unit setSpeedMode "FULL";
 		} else {
-			if ((_unit distance2D _target) < 100) then {
-				_unit setSpeedMode "FULL";
-			} else {
-				_unit setSpeedMode "LIMITED";
-			};
+			_unit setSpeedMode "LIMITED";
 		};
 	} else {
 		if (speed _unit < 1) then {

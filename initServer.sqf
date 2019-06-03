@@ -24,7 +24,7 @@ vehicleArray = [vehicleArray] call CBA_fnc_shuffle;
 [Phobos_cacheAiMain, 5] call CBA_fnc_addPerFrameHandler;
 [Phobos_coreMissions, 1] call CBA_fnc_addPerFrameHandler;
 [Phobos_corePopulation, 60] call CBA_fnc_addPerFrameHandler;
-[Phobos_coreZones, 10] call CBA_fnc_addPerFrameHandler;
+[Phobos_coreZones, 30] call CBA_fnc_addPerFrameHandler;
 
 //Temp
 [{
